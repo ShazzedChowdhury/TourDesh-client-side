@@ -12,6 +12,7 @@ import Home from "../pages/Home";
 import Register from "../pages/AuthPages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
+import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/CreateDonationRequest";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const mainRoutes = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "create-donation-request",
+        element: <CreateDonationRequest />,
       },
     ],
   },

@@ -35,7 +35,9 @@ const DashboardLayout = () => {
           </div>
         </div>
         {/* Page content here */}
-        <Outlet />
+        <div className="py-10 px-5">
+          <Outlet />
+        </div>
         {/* Page content here */}
       </div>
       <div className="drawer-side">
