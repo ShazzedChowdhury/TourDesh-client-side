@@ -106,7 +106,7 @@ const DonorDashboard = () => {
                       <FaEye />
                     </Link>
                     <Link
-                      to={`/dashboard/edit-donation/${req._id}`}
+                      to={`/dashboard/update-donation-request/${req._id}`}
                       className="btn btn-sm btn-warning"
                     >
                       <FaEdit />

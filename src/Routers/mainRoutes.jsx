@@ -13,6 +13,8 @@ import Register from "../pages/AuthPages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
 import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/CreateDonationRequest";
+import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/UpdateDonationRequest";
+import PrivateRoute from "./PrivateRoute";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -42,7 +44,11 @@ const mainRoutes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -51,6 +57,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "create-donation-request",
         element: <CreateDonationRequest />,
+      },
+      {
+        path: "update-donation-request/:id",
+        element: <UpdateDonationRequest />,
       },
     ],
   },
