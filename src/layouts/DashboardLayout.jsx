@@ -1,15 +1,12 @@
-// DashboardLayout.jsx
-
 import { Outlet } from "react-router";
-import DashboardSidebar from "../components/DashboardSidebar";
+import DashboardSidebar from "../shared/Dashboard/DashboardSidebar";
+import LifeDrop from "../shared/LifeDrop/LifeDrop";
 
 const DashboardLayout = () => {
-
-
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex p-10 justify-center">
+      <div className="drawer-content flex flex-col">
         {/* Navbar */}
         <div className="navbar bg-base-300 w-full  lg:hidden">
           <div className="flex-none">
@@ -33,10 +30,12 @@ const DashboardLayout = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2">LifeDrop</div>
+          <div className="mx-2 flex-1 px-2">
+            <LifeDrop />
+          </div>
         </div>
         {/* Page content here */}
-        <h1>this contents</h1>
+        <Outlet />
         {/* Page content here */}
       </div>
       <div className="drawer-side">
@@ -47,15 +46,17 @@ const DashboardLayout = () => {
         ></label>
 
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          <div className="mx-2 px-2 hidden lg:block">LifeDrop</div>
+          <div className="mb-2 px-2 py-2 hidden lg:block border-b-2 border-[#2E2E2E]">
+            <LifeDrop />
+          </div>
           {/* Sidebar content here */}
           <DashboardSidebar />
-          <li>
+          {/* <li>
             <a>Sidebar Item 1</a>
           </li>
           <li>
             <a>Sidebar Item 2</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

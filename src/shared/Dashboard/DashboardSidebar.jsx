@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import useRole from "../hooks/useRole";
+import useRole from "../../hooks/useRole";
 
 export default function DashboardSidebar() {
   const NavItem = ({ to, icon, label }) => (
@@ -8,7 +8,7 @@ export default function DashboardSidebar() {
       className={({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg font-medium ${
           isActive
-            ? "bg-blue-100 text-blue-600"
+            ? "bg-red-100 text-primary"
             : "text-gray-700 hover:bg-gray-200"
         }`
       }
@@ -19,7 +19,6 @@ export default function DashboardSidebar() {
 
   const { role, loading } = useRole();
 
-  
   if (loading) return <h1>Loading...</h1>;
 
   if (role === "admin")
@@ -28,7 +27,7 @@ export default function DashboardSidebar() {
         <NavItem
           to="/dashboard"
           // icon={<Home size={20} />}
-          label="Admin Dashboard Home"
+          label="Dashboard"
         />
         <NavItem
           to="/dashboard/all-users"
@@ -36,56 +35,66 @@ export default function DashboardSidebar() {
           label="All Users"
         />
         <NavItem
-          to="/dashboard/my-books"
-          // icon={<List size={20} />}
-          label="My Books"
+          to="/dashboard/all-blood-donation-request"
+          // icon={<BookOpen size={20} />}
+          label="All Donation Requests"
         />
         <NavItem
-          to="/dashboard/my-requests"
-          // icon={<BookOpen size={20} />}
-          label="My Requests"
+          to="/dashboard/content-management"
+          // icon={<List size={20} />}
+          label="Content Management"
         />
         <NavItem
           to="/dashboard/profile"
           // icon={<User size={20} />}
-          label="Profile"
+          label="My Profile"
         />
       </nav>
     );
-  if (role === "moderator")
+  if (role === "volunteer")
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
           to="/dashboard"
           // icon={<Home size={20} />}
-          label="Moderator Dashboard"
+          label="Dashboard"
+        />
+        <NavItem
+          to="/dashboard/all-blood-donation-request"
+          // icon={<BookOpen size={20} />}
+          label="All Donation Requests"
+        />
+        <NavItem
+          to="/dashboard/content-management"
+          // icon={<List size={20} />}
+          label="Content Management"
+        />
+        <NavItem
+          to="/dashboard/profile"
+          // icon={<User size={20} />}
+          label="My Profile"
         />
       </nav>
     );
 
-  // user sidebar
+  // donor sidebar
   return (
     <nav className="flex flex-col gap-4">
       <NavItem
         to="/dashboard"
         // icon={<Home size={20} />}
-        label="User Dashboard"
+        label="Dashboard"
       />
 
       <NavItem
-        to="/dashboard/add-book"
+        to="/dashboard/my-donation-requests"
         // icon={<Plus size={20} />}
-        label="Add Book"
+        label="My Donation Requests"
       />
       <NavItem
-        to="/dashboard/my-books"
+        to="/dashboard/create-donation-request"
         // icon={<List size={20} />}
-        label="My Books"
-      />
-      <NavItem
-        to="/dashboard/my-requests"
-        // icon={<BookOpen size={20} />}
-        label="My Requests"
+        label="Create Donation Request"
       />
       <NavItem
         to="/dashboard/profile"
