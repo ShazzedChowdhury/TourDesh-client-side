@@ -11,7 +11,8 @@ import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import MyBooks from "../pages/MyBooks";
-import Register from "../pages/Register";
+import Register from "../pages/AuthPages/Register";
+import AuthLayout from "../layouts/AuthLayout";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -64,6 +65,12 @@ const mainRoutes = createBrowserRouter([
           },
         ],
       },
+    ],
+  },
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: [
       {
         path: "login",
         element: <Login></Login>,
@@ -71,10 +78,9 @@ const mainRoutes = createBrowserRouter([
       {
         path: "registration",
         element: <Register></Register>,
-      },
-      {},
+      }
     ],
-  },
+  }
 ]);
 
 export default mainRoutes;

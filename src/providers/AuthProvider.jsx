@@ -52,16 +52,8 @@ const AuthProvider = ({ children }) => {
       console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser);
 
       if (currentUser) {
-        axiosPublic
-          .post("/add-user", {
-            email: currentUser.email,
-            role: "user",
-            loginCount: 1,
-          })
-          .then((res) => {
-            setUser(currentUser);
-            console.log(res.data);
-          });
+         setUser(currentUser);
+         console.log(user);
       }
 
       setLoading(false);
