@@ -37,25 +37,15 @@ const mainRoutes = createBrowserRouter([
           return data;
         },
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-          ,
-          {
-            path: "add-book",
-            element: <AddBooks />,
-          },
-          {
-            path: "all-users",
-            element: <AllUsers />,
-          },
-         
-        ],
+        index: true,
+        element: <Dashboard />,
       },
     ],
   },
@@ -70,9 +60,9 @@ const mainRoutes = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
-      }
+      },
     ],
-  }
+  },
 ]);
 
 export default mainRoutes;
