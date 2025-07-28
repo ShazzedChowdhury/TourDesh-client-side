@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import { useContext, useState } from "react";
 import { BiEnvelope, BiImageAdd, BiKey, BiUser } from "react-icons/bi";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import happy from "../../assets/happy.json";
 import Social from "../../components/Social";
 import Title from "../../components/Title";
@@ -60,7 +60,7 @@ const Register = () => {
       createUser(userData.email, data.password)
         .then(async (result) => {
           // Send to your backend API
-          const res = await axiosPublic.post("/add-user", userData);
+          await axiosPublic.post("/add-user", userData);
 
           //update user to the firebase
           updateUser({ displayName: userData.userName, photoURL: userData.photoURL })
@@ -94,9 +94,7 @@ const Register = () => {
   };
 
   return (
-     <div className="w-full p-6 bg-base-100 rounded-xl shadow">
-      <h2 className="text-2xl font-bold mb-4">Blood Donor Registration</h2>
-
+    <div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <input
           type="email"
@@ -104,7 +102,9 @@ const Register = () => {
           {...register("email", { required: true })}
           className="input input-bordered w-full"
         />
-        {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
+        {errors.email && (
+          <p className="text-red-500 text-sm">Email is required</p>
+        )}
 
         <input
           type="text"
@@ -112,7 +112,9 @@ const Register = () => {
           {...register("name", { required: true })}
           className="input input-bordered w-full"
         />
-        {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
+        {errors.name && (
+          <p className="text-red-500 text-sm">Name is required</p>
+        )}
 
         <input
           type="file"
@@ -120,9 +122,14 @@ const Register = () => {
           {...register("avatar", { required: true })}
           className="file-input file-input-bordered w-full"
         />
-        {errors.avatar && <p className="text-red-500 text-sm">Avatar is required</p>}
+        {errors.avatar && (
+          <p className="text-red-500 text-sm">Avatar is required</p>
+        )}
 
-        <select {...register("bloodGroup", { required: true })} className="select select-bordered w-full">
+        <select
+          {...register("bloodGroup", { required: true })}
+          className="select select-bordered w-full"
+        >
           <option value="">Select Blood Group</option>
           <option>A+</option>
           <option>A-</option>
@@ -133,9 +140,14 @@ const Register = () => {
           <option>O+</option>
           <option>O-</option>
         </select>
-        {errors.bloodGroup && <p className="text-red-500 text-sm">Blood group is required</p>}
+        {errors.bloodGroup && (
+          <p className="text-red-500 text-sm">Blood group is required</p>
+        )}
 
-        <select {...register("district", { required: true })} className="select select-bordered w-full">
+        <select
+          {...register("district", { required: true })}
+          className="select select-bordered w-full"
+        >
           <option value="">Select District</option>
           <option>Dhaka</option>
           <option>Chattogram</option>
@@ -147,7 +159,10 @@ const Register = () => {
           <option>Mymensingh</option>
         </select>
 
-        <select {...register("upazila", { required: true })} className="select select-bordered w-full">
+        <select
+          {...register("upazila", { required: true })}
+          className="select select-bordered w-full"
+        >
           <option value="">Select Upazila</option>
           <option>Mirpur</option>
           <option>Motijheel</option>
@@ -163,7 +178,9 @@ const Register = () => {
           {...register("password", { required: true, minLength: 6 })}
           className="input input-bordered w-full"
         />
-        {errors.password && <p className="text-red-500 text-sm">Min 6 characters</p>}
+        {errors.password && (
+          <p className="text-red-500 text-sm">Min 6 characters</p>
+        )}
 
         <input
           type="text"
@@ -175,7 +192,9 @@ const Register = () => {
           className="input input-bordered w-full"
         />
         {errors.confirm_password && (
-          <p className="text-red-500 text-sm">{errors.confirm_password.message}</p>
+          <p className="text-red-500 text-sm">
+            {errors.confirm_password.message}
+          </p>
         )}
 
         <button
@@ -186,6 +205,13 @@ const Register = () => {
           {isSubmitting ? "Registering..." : "Register"}
         </button>
       </form>
+      <p className="text-sm">
+        Already have an account?
+        <Link className="text-primary" to="/login">
+          Log in
+        </Link>{" "}
+        now.
+      </p>
     </div>
   );
 };

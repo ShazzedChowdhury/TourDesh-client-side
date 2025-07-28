@@ -9,10 +9,9 @@ import Dashboard from "../pages/Dashboard";
 import DetailsPage from "../pages/DetailsPage";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
-import MyBooks from "../pages/MyBooks";
 import Register from "../pages/AuthPages/Register";
 import AuthLayout from "../layouts/AuthLayout";
+import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -55,14 +54,7 @@ const mainRoutes = createBrowserRouter([
             path: "all-users",
             element: <AllUsers />,
           },
-          {
-            path: "my-books",
-            element: <MyBooks />,
-          },
-          {
-            path: "my-requests",
-            element: <MyBooks />,
-          },
+         
         ],
       },
     ],
@@ -73,10 +65,10 @@ const mainRoutes = createBrowserRouter([
     children: [
       {
         path: "login",
-        element: <Login></Login>,
+        element: <SignInPage />,
       },
       {
-        path: "registration",
+        path: "register",
         element: <Register></Register>,
       }
     ],
