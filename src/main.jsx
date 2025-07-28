@@ -4,7 +4,6 @@ import { RouterProvider } from "react-router";
 import mainRoutes from "./Routers/mainRoutes";
 import "./index.css";
 import AuthProvider from "./providers/AuthProvider";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ThemeProvider from "./providers/ThemeProvider";
 

@@ -57,7 +57,7 @@ const CreateDonationRequest = () => {
       donationDate: data.donationDate.toISOString().split("T")[0],
       donationTime: data.donationTime.toTimeString().slice(0, 5),
       requestMessage: data.requestMessage,
-      donation_status: "pending",
+      donationStatus: "pending",
     };
 
     console.log("Submitting:", donationRequest);
