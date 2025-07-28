@@ -1,6 +1,6 @@
 import { Navigate } from "react-router";
 import useRole from "../hooks/useRole";
-import AdminDashboard from "./AdminDashboard";
+import AdminDashboard from "./DashboardPages/AdminDashboard/AdminDashboard";
 import Loading from "../shared/loading";
 import DonorDashboard from "./DashboardPages/DonorDashboard/DonorDashboard";
 
