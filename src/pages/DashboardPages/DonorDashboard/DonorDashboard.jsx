@@ -18,7 +18,7 @@ const DonorDashboard = () => {
   } = useQuery({
     queryKey: ["myRequests", user.email],
     queryFn: async () => {
-      const res = await axiosSecure.get("/my-donation-requests");
+      const res = await axiosSecure.get("/recent-donation-requests");
       return res.data;
     },
   });

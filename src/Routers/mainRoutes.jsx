@@ -15,6 +15,7 @@ import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
 import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/CreateDonationRequest";
 import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/UpdateDonationRequest";
 import PrivateRoute from "./PrivateRoute";
+import MyDonationRequests from "../pages/DashboardPages/DonorDashboard/MyDonationRequests";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "create-donation-request",
         element: <CreateDonationRequest />,
+      },
+      {
+        path: "my-donation-requests",
+        element: <MyDonationRequests />,
       },
       {
         path: "update-donation-request/:id",
