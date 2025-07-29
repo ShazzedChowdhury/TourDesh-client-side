@@ -1,23 +1,27 @@
 import { useForm } from "react-hook-form";
-import { useRef, useState } from "react";
-import { JoditEditor } from "jodit-react";
+import { useState } from "react";
 import axios from "axios";
+import sweetMessage from "../../Utils/sweetMessage";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddBlog = () => {
   const { register, handleSubmit, reset } = useForm();
-  const editor = useRef(null);
   const [content, setContent] = useState("");
-
-  const imageHostKey = import.meta.env.VITE_IMAGEBB_API_KEY;
+    const axiosSecure = useAxiosSecure()
+  
 
   const onSubmit = async (data) => {
-    const imageFile = { image: data.thumbnail[0] };
+     const formData = new FormData();
+  formData.append("image", data.thumbnail[0]);
 
+ 
     try {
       // Upload thumbnail to imgbb
       const res = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${imageHostKey}`,
-        imageFile
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_imageBB_api_key
+        }`,
+        formData // send FormData object here
       );
 
       const thumbnailURL = res.data.data.display_url;
@@ -27,18 +31,21 @@ const AddBlog = () => {
         title: data.title,
         thumbnail: thumbnailURL,
         content: content,
-        status: "draft", // default
+        status: "draft",
         createdAt: new Date().toISOString(),
       };
-
+      console.log(thumbnailURL, blogData);
       // Send blog to server
-      await axios.post("/blogs", blogData); // replace with your actual blog endpoint
-      reset();
-      setContent("");
-      alert("Blog created successfully!");
+     const blogRes = await axiosSecure.post("/blogs", blogData);
+      if(blogRes.data.insertedId){
+        sweetMessage("Blog created successfully!");
+          reset();
+          setContent("");
+      }
+          
     } catch (error) {
       console.error("Blog creation failed:", error);
-      alert("Failed to create blog.");
+      sweetMessage("Failed to create blog.", "error");
     }
   };
 
@@ -68,19 +75,17 @@ const AddBlog = () => {
           />
         </div>
 
-        {/* Rich Text Editor */}
-        {/* <div>
+        {/* Blog Content */}
+        <div>
           <label className="block font-medium mb-1">Blog Content</label>
-          <JoditEditor
-            ref={editor}
+          <textarea
+            className="textarea textarea-bordered w-full h-40"
+            placeholder="Write your blog content here..."
             value={content}
-            config={{
-              readonly: false,
-              placeholder: "Write your blog content here...",
-            }}
-            onChange={(newContent) => setContent(newContent)}
-          />
-        </div> */}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          ></textarea>
+        </div>
 
         {/* Submit Button */}
         <button type="submit" className="btn btn-primary">

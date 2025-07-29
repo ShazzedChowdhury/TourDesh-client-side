@@ -22,6 +22,8 @@ import Loading from "../shared/loading";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import SearchDonors from "../pages/SearchDonors";
 import EditProfile from "../shared/EditProfile";
+import BlogPage from "../pages/BlogPage";
+import BlogDetails from "../pages/BlogDetails";
 
 
 const mainRoutes = createBrowserRouter([
@@ -41,6 +43,14 @@ const mainRoutes = createBrowserRouter([
       {
         path: "search",
         element: <SearchDonors />,
+      },
+      {
+        path: "blogs",
+        element: <BlogPage />,
+      },
+      {
+        path: "/blogs-details/:id",
+        element: <BlogDetails />,
       },
       {
         path: "request-details/:id",
