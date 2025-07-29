@@ -5,6 +5,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../shared/loading";
 import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import sweetMessage from "../../../Utils/sweetMessage";
 
 const AllDonationRequests = () => {
   const { user } = useAuth();
@@ -15,6 +17,7 @@ const AllDonationRequests = () => {
   const [filter, setFilter] = useState("all");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [reFetch, setReFetch] = useState(false);
   // const {
   //   isPending,
   //   isError,
@@ -34,32 +37,56 @@ const AllDonationRequests = () => {
       .then((res) => {
         setMyRequests(res.data.requests);
         setTotalPages(Math.ceil(res.data.totalCount / 5));
-        setLoading(false)
+        setLoading(false);
       });
-  }, [user, page, filter]);
+  }, [user, page, filter, reFetch]);
 
   const handleDelete = async (id) => {
-    // const confirm = window.confirm("Are you sure you want to delete?");
-    // if (!confirm) return;
-    // try {
-    //   await axios.delete(`/api/donations/${id}`);
-    //   setmyRequests((prev) => prev.filter((d) => d._id !== id));
-    // } catch (err) {
-    //   console.error("Failed to delete", err);
-    // }
-  };
+     Swal.fire({
+       title: "Are you sure?",
+       text: "You won't be able to revert this!",
+       icon: "warning",
+       showCancelButton: true,
+       confirmButtonColor: "#3085d6",
+       cancelButtonColor: "#d33",
+       confirmButtonText: "Yes, delete it!",
+     }).then(async (result) => {
+       if (result.isConfirmed) {
+         try {
+           const res = await axiosSecure.delete(`/donation-request/${id}`);
+          if (res.data.deletedCount){
+             Swal.fire({
+               title: "Deleted!",
+               text: "Your file has been deleted.",
+               icon: "success",
+             });
+            setReFetch(prev => !prev)
+          }
+  
+         
+         } catch (err) {
+           console.error("Failed to delete", err);
+         }
+  
+         
+       }
+     }); 
+    };
 
   const handleStatusChange = async (id, newStatus) => {
-    // try {
-    //   await axios.patch(`/api/donations/${id}`, { donation_status: newStatus });
-    //   setmyRequests((prev) =>
-    //     prev.map((d) =>
-    //       d._id === id ? { ...d, donation_status: newStatus } : d
-    //     )
-    //   );
-    // } catch (err) {
-    //   console.error("Failed to update status", err);
-    // }
+    console.log(id, newStatus);
+    try {
+      const res = await axiosSecure.patch(`/update-request-status/${id}`, {
+        status: newStatus,
+      });
+      console.log(res.data.modifiedCount);
+      if (res.data.modifiedCount) {
+        sweetMessage("Status update successfully.");
+        setReFetch((prev) => !prev);
+      }
+    } catch (err) {
+      console.error("Failed to update status", err);
+    }
   };
   
   //   if (isPending) {

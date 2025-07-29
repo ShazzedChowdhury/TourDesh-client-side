@@ -5,6 +5,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../shared/loading";
 import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import sweetMessage from "../../../Utils/sweetMessage";
 
 const DonorDashboard = () => {
   const {user} = useAuth()
@@ -13,6 +15,7 @@ const DonorDashboard = () => {
   const {
     isPending,
     isError,
+    refetch,
     data: donationRequests=[],
     error,
   } = useQuery({
@@ -28,28 +31,51 @@ const DonorDashboard = () => {
  }
 
   const handleDelete = async (id) => {
-    // const confirm = window.confirm("Are you sure you want to delete?");
-    // if (!confirm) return;
+   Swal.fire({
+     title: "Are you sure?",
+     text: "You won't be able to revert this!",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "#3085d6",
+     cancelButtonColor: "#d33",
+     confirmButtonText: "Yes, delete it!",
+   }).then(async (result) => {
+     if (result.isConfirmed) {
+       try {
+         const res = await axiosSecure.delete(`/donation-request/${id}`);
+        if (res.data.deletedCount){
+           Swal.fire({
+             title: "Deleted!",
+             text: "Your file has been deleted.",
+             icon: "success",
+           });
+           refetch()
+        }
 
-    // try {
-    //   await axios.delete(`/api/donations/${id}`);
-    //   setDonationRequests((prev) => prev.filter((d) => d._id !== id));
-    // } catch (err) {
-    //   console.error("Failed to delete", err);
-    // }
+       
+       } catch (err) {
+         console.error("Failed to delete", err);
+       }
+
+       
+     }
+   }); 
   };
 
   const handleStatusChange = async (id, newStatus) => {
-    // try {
-    //   await axios.patch(`/api/donations/${id}`, { donation_status: newStatus });
-    //   setDonationRequests((prev) =>
-    //     prev.map((d) =>
-    //       d._id === id ? { ...d, donation_status: newStatus } : d
-    //     )
-    //   );
-    // } catch (err) {
-    //   console.error("Failed to update status", err);
-    // }
+    console.log(id, newStatus);
+    try {
+      const res = await axiosSecure.patch(`/update-request-status/${id}`, { status: newStatus });
+
+      if(res.data.modifiedCount){
+        sweetMessage("Status update successfully.")
+        refetch()
+      }
+      
+      
+    } catch (err) {
+      console.error("Failed to update status", err);
+    }
   };
   console.log(donationRequests)
   return (
@@ -100,7 +126,7 @@ const DonorDashboard = () => {
                   </td>
                   <td className="flex flex-col gap-2">
                     <Link
-                      to={`/dashboard/donation/${req._id}`}
+                      to={`/request-details/${req._id}`}
                       className="btn btn-sm btn-info"
                     >
                       <FaEye />

@@ -1,14 +1,26 @@
-[
-  {
-    "title": "Why Donate Blood?",
-    "description": "Every two seconds, someone needs blood. A single donation can save up to three lives, making you a true lifesaver."
-  },
-  {
-    "title": "Who Can Donate?",
-    "description": "Healthy individuals aged 18–65, weighing at least 50kg, can donate. It's safe, quick, and highly impactful."
-  },
-  {
-    "title": "How Often?",
-    "description": "You can donate whole blood every 3 months. Stay healthy and keep saving lives regularly."
+{
+  "section": {
+    "title": "Why Blood Donation Matters",
+    "subtitle": "Save lives, support communities, and make a lasting impact with every drop you give.",
+    "features": [
+      {
+        "icon": "🩸",
+        "title": "Why Donate Blood?",
+        "description": "Every two seconds, someone needs blood. A single donation can save up to three lives, making you a true lifesaver.",
+        "color": "text-red-600"
+      },
+      {
+        "icon": "❤️",
+        "title": "Who Can Donate?",
+        "description": "Healthy individuals aged 18–65, weighing at least 50kg, can donate. It's safe, quick, and highly impactful.",
+        "color": "text-rose-500"
+      },
+      {
+        "icon": "⏰",
+        "title": "How Often?",
+        "description": "You can donate whole blood every 3 months. Stay healthy and keep saving lives regularly.",
+        "color": "text-blue-500"
+      }
+    ]
   }
-]
+}

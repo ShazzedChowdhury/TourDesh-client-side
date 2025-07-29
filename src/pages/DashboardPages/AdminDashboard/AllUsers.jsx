@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaEllipsisV } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../shared/loading";
+import sweetMessage from "../../../Utils/sweetMessage";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,21 +23,28 @@ const AllUsers = () => {
     });
   }, [user, page, filter, reFetch]);
 
-  const handleStatusToggle = async (id, status) => {
-    // const newStatus = status === "active" ? "blocked" : "active";
-    // await axiosSecure.patch(`/user/status/${id}`, { status: newStatus });
-    // setUsers((prev) =>
-    //   prev.map((user) =>
-    //     user._id === id ? { ...user, status: newStatus } : user
-    //   )
-    // );
+  const handleStatusToggle = async (email, status) => {
+    console.log(email, status);
+    const newStatus = status === "active" ? "blocked" : "active";
+    const res = await axiosSecure.patch(`/update-user-status`, { status: newStatus, email });
+    if(res.data.modifiedCount){
+      sweetMessage("Status updated successfully.");
+      setReFetch(prev => !prev)
+    }
+    
   };
 
-  const handleRoleChange = async (id, newRole) => {
-    // await axiosSecure.patch(`/user/role/${id}`, { role: newRole });
-    // setUsers((prev) =>
-    //   prev.map((user) => (user._id === id ? { ...user, role: newRole } : user))
-    // );
+  const handleRoleChange = async (email, newRole) => {
+   const res = await axiosSecure.patch(`/update-role`, {
+     role: newRole,
+     email,
+   });
+
+   if (res.data.modifiedCount) {
+     sweetMessage("Role updated successfully.");
+     setReFetch((prev) => !prev);
+   }
+    
   };
 
   if (loading) return <Loading />;
@@ -98,7 +106,7 @@ const AllUsers = () => {
                         <li>
                           <button
                             onClick={() =>
-                              handleStatusToggle(user._id, user.status)
+                              handleStatusToggle(user.email, user.status)
                             }
                           >
                             Block
@@ -108,7 +116,7 @@ const AllUsers = () => {
                         <li>
                           <button
                             onClick={() =>
-                              handleStatusToggle(user._id, user.status)
+                              handleStatusToggle(user.email, user.status)
                             }
                           >
                             Unblock
@@ -119,7 +127,7 @@ const AllUsers = () => {
                         <li>
                           <button
                             onClick={() =>
-                              handleRoleChange(user._id, "volunteer")
+                              handleRoleChange(user.email, "volunteer")
                             }
                           >
                             Make Volunteer
@@ -129,7 +137,9 @@ const AllUsers = () => {
                       {user.role !== "admin" && (
                         <li>
                           <button
-                            onClick={() => handleRoleChange(user._id, "admin")}
+                            onClick={() =>
+                              handleRoleChange(user.email, "admin")
+                            }
                           >
                             Make Admin
                           </button>
