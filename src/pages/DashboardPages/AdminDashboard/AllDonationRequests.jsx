@@ -7,9 +7,11 @@ import Loading from "../../../shared/loading";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import sweetMessage from "../../../Utils/sweetMessage";
+import useRole from "../../../hooks/useRole";
 
 const AllDonationRequests = () => {
   const { user } = useAuth();
+  const {role} = useRole()
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,7 @@ const AllDonationRequests = () => {
   //     return res.data;
   //   },
   // });
-
+    console.log(role)
   useEffect(() => {
     axiosSecure
       .get(`/all-donation-requests?page=${page}&filter=${filter}`)
@@ -155,24 +157,28 @@ const AllDonationRequests = () => {
                   )}
                 </td>
                 <td className="flex flex-col gap-2">
-                  <Link
-                    to={`/dashboard/donation/${req._id}`}
-                    className="btn btn-sm btn-info"
-                  >
-                    <FaEye />
-                  </Link>
-                  <Link
-                    to={`/dashboard/update-donation-request/${req._id}`}
-                    className="btn btn-sm btn-warning"
-                  >
-                    <FaEdit />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(req._id)}
-                    className="btn btn-sm btn-error"
-                  >
-                    <FaTrash />
-                  </button>
+                  {role !== "volunteer" && (
+                    <>
+                      <Link
+                        to={`/dashboard/donation/${req._id}`}
+                        className="btn btn-sm btn-info"
+                      >
+                        <FaEye />
+                      </Link>
+                      <Link
+                        to={`/dashboard/update-donation-request/${req._id}`}
+                        className="btn btn-sm btn-warning"
+                      >
+                        <FaEdit />
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(req._id)}
+                        className="btn btn-sm btn-error"
+                      >
+                        <FaTrash />
+                      </button>
+                    </>
+                  )}
                 </td>
 
                 <td>

@@ -21,6 +21,7 @@ import DonationDetailsPage from "../pages/DonationDetailsPage/DonationDetailsPag
 import Loading from "../shared/loading";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import SearchDonors from "../pages/SearchDonors";
+import EditProfile from "../shared/EditProfile";
 
 
 const mainRoutes = createBrowserRouter([
@@ -90,6 +91,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "update-donation-request/:id",
         element: <UpdateDonationRequest />,
+      },
+      {
+        path: "profile",
+        element: <EditProfile />,
       },
     ],
   },
