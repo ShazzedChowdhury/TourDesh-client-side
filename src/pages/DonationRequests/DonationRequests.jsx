@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import Loading from "../../shared/loading";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
+import useAxiosPublic from "../../hooks/axiosPublic";
 
 const DonationRequests = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosSecure.get("/pending-donation-requests").then((res) => {
+    axiosPublic.get("/pending-donation-requests").then((res) => {
       setRequests(res.data || []);
       setLoading(false);
     });

@@ -4,7 +4,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import RootLayout from "../layouts/RootLayout";
 import Dashboard from "../pages/Dashboard";
 import Error from "../pages/Error";
-import Home from "../pages/Home";
+import Home from "../pages/HomePage/Home";
 import Register from "../pages/AuthPages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
