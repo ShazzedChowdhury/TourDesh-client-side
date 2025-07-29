@@ -2,7 +2,6 @@ import axios from "axios";
 import { createBrowserRouter } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout";
 import RootLayout from "../layouts/RootLayout";
-import AvailableBooks from "../pages/AvailableBooks";
 import Dashboard from "../pages/Dashboard";
 import DetailsPage from "../pages/DetailsPage";
 import Error from "../pages/Error";
@@ -16,6 +15,9 @@ import PrivateRoute from "./PrivateRoute";
 import MyDonationRequests from "../pages/DashboardPages/DonorDashboard/MyDonationRequests";
 import AllUsers from "../pages/DashboardPages/AdminDashboard/AllUsers";
 import AllDonationRequests from "../pages/DashboardPages/AdminDashboard/AllDonationRequests";
+import ContentManagement from "../shared/Dashboard/ContentManagement";
+import AddBlog from "../shared/Dashboard/AddBlog";
+import DonationRequests from "../pages/DonationRequests/DonationRequests";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -28,8 +30,8 @@ const mainRoutes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/available-books",
-        element: <AvailableBooks />,
+        path: "donation-ruquests",
+        element: <DonationRequests />,
       },
       {
         path: "/details/:bookId",
@@ -70,6 +72,14 @@ const mainRoutes = createBrowserRouter([
       {
         path: "all-blood-donation-request",
         element: <AllDonationRequests />,
+      },
+      {
+        path: "content-management",
+        element: <ContentManagement />,
+      },
+      {
+        path: "content-management/add-blog",
+        element: <AddBlog />,
       },
       {
         path: "update-donation-request/:id",

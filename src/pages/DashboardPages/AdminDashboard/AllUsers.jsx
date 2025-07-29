@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaEllipsisV } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import Pagination from "../../../shared/Pagination";
 import Loading from "../../../shared/loading";
 
 const AllUsers = () => {

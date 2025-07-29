@@ -1,14 +1,21 @@
 import { Outlet } from "react-router";
 import Header from "../components/Header";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const RootLayout = () => {
   return (
-    <div>
-      <Header></Header>
-      <main className="overflow-x-clip">
-        <Outlet></Outlet>
+    <>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Outlet />
       </main>
-    </div>
+      <footer className="bg-[#111827]">
+        <Footer />
+      </footer>
+    </>
   );
 };
 

@@ -1,0 +1,9 @@
+ul li a,
+#log-out {
+    font-weight: 600;
+}
+
+.active {
+    background-color: #D62828;
+    color: #ffffff;
+}
