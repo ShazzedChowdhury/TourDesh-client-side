@@ -20,6 +20,7 @@ import DonationRequests from "../pages/DonationRequests/DonationRequests";
 import DonationDetailsPage from "../pages/DonationDetailsPage/DonationDetailsPage";
 import Loading from "../shared/loading";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import SearchDonors from "../pages/SearchDonors";
 
 
 const mainRoutes = createBrowserRouter([
@@ -35,6 +36,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "donation-ruquests",
         element: <DonationRequests />,
+      },
+      {
+        path: "search",
+        element: <SearchDonors />,
       },
       {
         path: "request-details/:id",

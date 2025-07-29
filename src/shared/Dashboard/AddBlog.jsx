@@ -69,7 +69,7 @@ const AddBlog = () => {
         </div>
 
         {/* Rich Text Editor */}
-        <div>
+        {/* <div>
           <label className="block font-medium mb-1">Blog Content</label>
           <JoditEditor
             ref={editor}
@@ -80,7 +80,7 @@ const AddBlog = () => {
             }}
             onChange={(newContent) => setContent(newContent)}
           />
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <button type="submit" className="btn btn-primary">
