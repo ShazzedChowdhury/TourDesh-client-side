@@ -2,8 +2,6 @@ import axios from "axios";
 import { createBrowserRouter } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout";
 import RootLayout from "../layouts/RootLayout";
-import AddBooks from "../pages/AddBooks";
-import AllUsers from "../pages/AllUsers";
 import AvailableBooks from "../pages/AvailableBooks";
 import Dashboard from "../pages/Dashboard";
 import DetailsPage from "../pages/DetailsPage";
@@ -16,6 +14,7 @@ import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/Create
 import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/UpdateDonationRequest";
 import PrivateRoute from "./PrivateRoute";
 import MyDonationRequests from "../pages/DashboardPages/DonorDashboard/MyDonationRequests";
+import AllUsers from "../pages/DashboardPages/AdminDashboard/AllUsers";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -62,6 +61,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "my-donation-requests",
         element: <MyDonationRequests />,
+      },
+      {
+        path: "all-users",
+        element: <AllUsers />,
       },
       {
         path: "update-donation-request/:id",
