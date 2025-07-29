@@ -15,6 +15,7 @@ import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/Update
 import PrivateRoute from "./PrivateRoute";
 import MyDonationRequests from "../pages/DashboardPages/DonorDashboard/MyDonationRequests";
 import AllUsers from "../pages/DashboardPages/AdminDashboard/AllUsers";
+import AllDonationRequests from "../pages/DashboardPages/AdminDashboard/AllDonationRequests";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "all-users",
         element: <AllUsers />,
+      },
+      {
+        path: "all-blood-donation-request",
+        element: <AllDonationRequests />,
       },
       {
         path: "update-donation-request/:id",

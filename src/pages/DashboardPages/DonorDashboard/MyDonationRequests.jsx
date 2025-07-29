@@ -6,7 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../shared/loading";
 import { Link, useNavigate } from "react-router";
 
-const MymyRequests = () => {
+const MyDonationRequests = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
@@ -217,4 +217,4 @@ const MymyRequests = () => {
     );
 };
 
-export default MymyRequests;
+export default MyDonationRequests;
