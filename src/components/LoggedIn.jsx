@@ -5,14 +5,12 @@ const LoggedIn = ({ handleUserLogOut }) => {
   const [isOpen, setOpen] = useState(false);
   
 
-  return (
-    <>
+  return ( 
       <UserProfile
         onClick={() => setOpen((prev) => !prev)}
         isOpen={isOpen}
         handleUserLogOut={handleUserLogOut}
-      />
-    </>
+      />   
   );
 };
 

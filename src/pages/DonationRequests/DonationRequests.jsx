@@ -17,7 +17,7 @@ const DonationRequests = () => {
   }, []);
 
   if (loading) return <Loading />;
-  console.log(requests.length);
+ 
   return (
     <div className="p-4 max-w-7xl mx-auto py-10">
       <h2 className="text-2xl font-bold mb-4">
@@ -41,15 +41,15 @@ const DonationRequests = () => {
               <tr key={req._id}>
                 <td>{idx + 1}</td>
                 <td>{req.recipientName}</td>
-                <td>{req.location}</td>
+                <td>{req.hospitalName}</td>
                 <td className="font-semibold">{req.bloodGroup}</td>
-                <td>{req.date}</td>
-                <td>{req.time}</td>
+                <td>{req.donationDate}</td>
+                <td>{req.donationTime}</td>
                 <td>
                   <button
                     className="btn btn-sm btn-outline"
                     onClick={() =>
-                      navigate(`/dashboard/request-details/${req._id}`)
+                      navigate(`/request-details/${req._id}`)
                     }
                   >
                     View

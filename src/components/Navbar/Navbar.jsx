@@ -1,16 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 import './navbar.css'
-import useAuth from '../../hooks/useAuth';
 import NotLoggedIn from '../NotLoggedIn';
 import LoggedIn from '../LoggedIn';
 import LifeDrop from '../../shared/LifeDrop/LifeDrop';
 import sweetMessage from "../../Utils/sweetMessage.js"
+import useAuth from '../../hooks/useAuth.jsx';
 
 const Navbar = () => {
     const { user, setUser, logOut } = useAuth();
 
-
+  console.log(user)
     const handleUserLogOut = () => {
       logOut()
         .then(() => {

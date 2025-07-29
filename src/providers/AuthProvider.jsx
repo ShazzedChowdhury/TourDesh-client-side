@@ -11,15 +11,15 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import useAxiosPublic from "../hooks/axiosPublic";
+
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic();
+  
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);

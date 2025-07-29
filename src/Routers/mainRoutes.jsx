@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout";
 import RootLayout from "../layouts/RootLayout";
 import Dashboard from "../pages/Dashboard";
-import DetailsPage from "../pages/DetailsPage";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Register from "../pages/AuthPages/Register";
@@ -18,6 +17,10 @@ import AllDonationRequests from "../pages/DashboardPages/AdminDashboard/AllDonat
 import ContentManagement from "../shared/Dashboard/ContentManagement";
 import AddBlog from "../shared/Dashboard/AddBlog";
 import DonationRequests from "../pages/DonationRequests/DonationRequests";
+import DonationDetailsPage from "../pages/DonationDetailsPage/DonationDetailsPage";
+import Loading from "../shared/loading";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 const mainRoutes = createBrowserRouter([
   {
@@ -34,14 +37,12 @@ const mainRoutes = createBrowserRouter([
         element: <DonationRequests />,
       },
       {
-        path: "/details/:bookId",
-        element: <DetailsPage />,
-        loader: async ({ params }) => {
-          const { data } = await axios.get(
-            `http://localhost:5000/details/${params.bookId}`
-          );
-          return data;
-        },
+        path: "request-details/:id",
+        element: (
+          <PrivateRoute>
+            <DonationDetailsPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },

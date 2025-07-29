@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../providers/AuthProvider";
+import useAuth from "./useAuth";
 
 const useAxiosSecure = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   console.log("🚀 ~ useAxiosSecure ~ accessToken:", user.accessToken);
   const instance = axios.create({
     baseURL: "http://localhost:5000",
