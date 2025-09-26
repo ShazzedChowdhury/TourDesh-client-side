@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey,
-  authDomain: import.meta.env.VITE_authDomain,
-  projectId: import.meta.env.VITE_projectId,
-  storageBucket: import.meta.env.VITE_storageBucket,
-  messagingSenderId: import.meta.env.VITE_messagingSenderId,
-  appId: import.meta.env.VITE_appId,
+  apiKey: "AIzaSyDi8FTnjlgsPL2JwsMxKS94Pppf_2-Zsmo",
+  authDomain: "tourdesh-project-client.firebaseapp.com",
+  projectId: "tourdesh-project-client",
+  storageBucket: "tourdesh-project-client.firebasestorage.app",
+  messagingSenderId: "368197402263",
+  appId: "1:368197402263:web:7277a7cf6f261e8beb33d2",
 };
 
 
