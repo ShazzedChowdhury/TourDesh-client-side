@@ -126,52 +126,6 @@ const Register = () => {
           <p className="text-red-500 text-sm">Avatar is required</p>
         )}
 
-        <select
-          {...register("bloodGroup", { required: true })}
-          className="select select-bordered w-full"
-        >
-          <option value="">Select Blood Group</option>
-          <option>A+</option>
-          <option>A-</option>
-          <option>B+</option>
-          <option>B-</option>
-          <option>AB+</option>
-          <option>AB-</option>
-          <option>O+</option>
-          <option>O-</option>
-        </select>
-        {errors.bloodGroup && (
-          <p className="text-red-500 text-sm">Blood group is required</p>
-        )}
-
-        <select
-          {...register("district", { required: true })}
-          className="select select-bordered w-full"
-        >
-          <option value="">Select District</option>
-          <option>Dhaka</option>
-          <option>Chattogram</option>
-          <option>Rajshahi</option>
-          <option>Khulna</option>
-          <option>Sylhet</option>
-          <option>Barishal</option>
-          <option>Rangpur</option>
-          <option>Mymensingh</option>
-        </select>
-
-        <select
-          {...register("upazila", { required: true })}
-          className="select select-bordered w-full"
-        >
-          <option value="">Select Upazila</option>
-          <option>Mirpur</option>
-          <option>Motijheel</option>
-          <option>Panchlaish</option>
-          <option>Uttara</option>
-          <option>Banani</option>
-          <option>Kotwali</option>
-        </select>
-
         <input
           type="text"
           placeholder="Password"

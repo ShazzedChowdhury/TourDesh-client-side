@@ -51,31 +51,10 @@ const DashboardLayout = () => {
           <div className="mb-2 px-2 py-2 hidden lg:block border-b-2 border-[#2E2E2E]">
             <LifeDrop />
           </div>
-          {/* Sidebar content here */}
-          <DashboardSidebar />
-          {/* <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li> */}
+          <DashboardSidebar />         
         </ul>
       </div>
     </div>
-    // <div className="min-h-screen flex bg-gray-100">
-    //   {/* Sidebar */}
-    //   <aside className="w-64 bg-white shadow-md p-5 hidden md:block">
-    //     <div className="text-2xl font-bold mb-10 text-center text-blue-600">
-    //       BookSwap Hub
-    //     </div>
-    //     <DashboardSidebar />
-    //   </aside>
-
-    //   {/* Main Content */}
-    //   <div className="flex-1 p-4 md:p-6">
-    //     <Outlet />
-    //   </div>
-    // </div>
   );
 };
 
