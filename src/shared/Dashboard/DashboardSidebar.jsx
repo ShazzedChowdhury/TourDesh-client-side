@@ -35,9 +35,9 @@ export default function DashboardSidebar() {
           label="All Users"
         />
         <NavItem
-          to="/dashboard/all-blood-donation-request"
+          to="/dashboard/add-packages"
           // icon={<BookOpen size={20} />}
-          label="All Donation Requests"
+          label="Add packages"
         />
         <NavItem
           to="/dashboard/content-management"

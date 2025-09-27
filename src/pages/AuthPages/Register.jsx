@@ -49,10 +49,7 @@ const Register = () => {
         email: data.email,
         userName: data.name,
         photoURL: avatarURL,
-        bloodGroup: data.bloodGroup,
-        district: data.district,
-        upazila: data.upazila,
-        role: 'donor',
+        role: 'tourist',
         status: "active",
       };
 
