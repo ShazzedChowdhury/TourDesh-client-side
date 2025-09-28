@@ -3,7 +3,7 @@ import useRole from "../hooks/useRole";
 import Loading from "../shared/loading";
 import DonorDashboard from "./DashboardPages/DonorDashboard/DonorDashboard";
 import VolunteerDashboard from "./DashboardPages/VolunteerDashboard/VolunteerDashboard";
-import AdminDashboard from "./DashboardPages/AdminDashboard/AdminDashboard";
+import AdminDashboard from "./DashboardPages/Admin/AdminDashboard";
 
 
 export default function Dashboard() {

@@ -8,16 +8,15 @@ import Home from "../pages/HomePage/Home";
 import Register from "../pages/AuthPages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
-import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/CreateDonationRequest";
-import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/UpdateDonationRequest";
 import PrivateRoute from "./PrivateRoute";
 import DonationRequests from "../pages/DonationRequests/DonationRequests";
 import DonationDetailsPage from "../pages/DonationDetailsPage/DonationDetailsPage";
 import SearchDonors from "../pages/SearchDonors";
 import BlogPage from "../pages/BlogPage";
 import BlogDetails from "../pages/BlogDetails";
-import AddPackage from "../pages/DashboardPages/AdminDashboard/AddPackage";
-import ManageUsers from "../pages/DashboardPages/AdminDashboard/ManageUsers";
+import AddPackage from "../pages/DashboardPages/Admin/AddPackage";
+import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers";
+import ManageCandidates from "../pages/DashboardPages/Admin/ManageCandidates";
 
 
 const mainRoutes = createBrowserRouter([
@@ -75,6 +74,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />
+      },
+      {
+        path: "manage-candidates",
+        element: <ManageCandidates />
       }
     ],
   },

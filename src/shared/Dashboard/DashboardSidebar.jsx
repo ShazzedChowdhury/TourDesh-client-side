@@ -35,9 +35,9 @@ export default function DashboardSidebar() {
           label="Manage users"
         />
         <NavItem
-          to="/dashboard/add-packages"
+          to="/dashboard/manage-candidates"
           // icon={<BookOpen size={20} />}
-          label="Add packages"
+          label="Manage candidates"
         />
         <NavItem
           to="/dashboard/content-management"
