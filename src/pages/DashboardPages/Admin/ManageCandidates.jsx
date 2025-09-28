@@ -18,17 +18,27 @@ const ManageCandidates = () => {
 
   // Mutation: Accept candidate (update role + remove application)
   const acceptMutation = useMutation({
-     mutationFn: async (application) => {
-       // 1. Update user role
-       await axiosSecure.patch(`users/${application.email}`, {
-         role: "tour guide",
-       });
-       // 2. Delete application
-       return await axiosSecure.delete(`applications/${application._id}`);
-     },
-     onSuccess: () => {
-        queryClient.invalidateQueries(["applications"]);
-     }
+    mutationFn: async (application) => {
+      // 1. Update user role
+      await axiosSecure.patch(`users/${application.email}`, {
+        role: "tour guide",
+      });
+      // 2. Delete application
+      return await axiosSecure.delete(`applications/${application._id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["applications"]);
+    },
+  });
+
+  //Mutation: Reject candidate (delete application only)
+  const rejectMutation = useMutation({
+    mutationFn: async(id) => {
+        return await axiosSecure.delete(`applications/${id}`)
+    },
+    onSuccess: () => {
+        queryClient.invalidateQueries(["applications"])
+    }
   })
 
   if (isLoading) {
@@ -75,13 +85,13 @@ const ManageCandidates = () => {
                 <td>{app.role}</td>
                 <td className="space-x-2">
                   <button
-                    //   onClick={() => acceptMutation.mutate(app)}
+                    onClick={() => acceptMutation.mutate(app)}
                     className="btn btn-sm btn-success"
                   >
                     Accept
                   </button>
                   <button
-                    //   onClick={() => rejectMutation.mutate(app._id)}
+                      onClick={() => rejectMutation.mutate(app._id)}
                     className="btn btn-sm btn-error"
                   >
                     Reject
