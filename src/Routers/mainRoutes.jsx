@@ -11,19 +11,13 @@ import SignInPage from "../pages/AuthPages/SignInPage/SignInPage";
 import CreateDonationRequest from "../pages/DashboardPages/DonorDashboard/CreateDonationRequest";
 import UpdateDonationRequest from "../pages/DashboardPages/DonorDashboard/UpdateDonationRequest";
 import PrivateRoute from "./PrivateRoute";
-import MyDonationRequests from "../pages/DashboardPages/DonorDashboard/MyDonationRequests";
-import AllUsers from "../pages/DashboardPages/AdminDashboard/AllUsers";
-import AllDonationRequests from "../pages/DashboardPages/AdminDashboard/AllDonationRequests";
-import ContentManagement from "../shared/Dashboard/ContentManagement";
-import AddBlog from "../shared/Dashboard/AddBlog";
 import DonationRequests from "../pages/DonationRequests/DonationRequests";
 import DonationDetailsPage from "../pages/DonationDetailsPage/DonationDetailsPage";
-import Loading from "../shared/loading";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 import SearchDonors from "../pages/SearchDonors";
-import EditProfile from "../shared/EditProfile";
 import BlogPage from "../pages/BlogPage";
 import BlogDetails from "../pages/BlogDetails";
+import AddPackage from "../pages/DashboardPages/AdminDashboard/AddPackage";
+import ManageUsers from "../pages/DashboardPages/AdminDashboard/ManageUsers";
 
 
 const mainRoutes = createBrowserRouter([
@@ -75,37 +69,13 @@ const mainRoutes = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "create-donation-request",
-        element: <CreateDonationRequest />,
+        path: "add-packages",
+        element: <AddPackage />,
       },
       {
-        path: "my-donation-requests",
-        element: <MyDonationRequests />,
-      },
-      {
-        path: "all-users",
-        element: <AllUsers />,
-      },
-      {
-        path: "all-blood-donation-request",
-        element: <AllDonationRequests />,
-      },
-      {
-        path: "content-management",
-        element: <ContentManagement />,
-      },
-      {
-        path: "content-management/add-blog",
-        element: <AddBlog />,
-      },
-      {
-        path: "update-donation-request/:id",
-        element: <UpdateDonationRequest />,
-      },
-      {
-        path: "profile",
-        element: <EditProfile />,
-      },
+        path: "manage-users",
+        element: <ManageUsers />
+      }
     ],
   },
   {

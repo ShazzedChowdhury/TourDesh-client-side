@@ -30,9 +30,9 @@ export default function DashboardSidebar() {
           label="Dashboard"
         />
         <NavItem
-          to="/dashboard/all-users"
+          to="/dashboard/manage-users"
           // icon={<Plus size={20} />}
-          label="All Users"
+          label="Manage users"
         />
         <NavItem
           to="/dashboard/add-packages"

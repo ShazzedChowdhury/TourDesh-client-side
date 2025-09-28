@@ -1,6 +1,8 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import sweetMessage from "../../../Utils/sweetMessage";
+import useAuth from "../../../hooks/useAuth";
 
 const imageHostingKey = import.meta.env.VITE_imageBB_api_key; // store key in .env
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -18,6 +20,7 @@ const AddPackage = () => {
   });
 
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -41,6 +44,7 @@ const AddPackage = () => {
         }
       }
 
+
       // 2. Prepare package object
       const packageInfo = {
         title: data.title,
@@ -49,13 +53,14 @@ const AddPackage = () => {
         location: data.location,
         images: imageUrls,
         tourPlans: data.tourPlans,
+        addedBy: user.email
       };
-
+      console.log(packageInfo)
       // 3. Save to backend
-      const response = await axiosSecure.post("/packages", packageInfo);
+      const response = await axiosSecure.post("/add-package", packageInfo);
 
       if (response.data.insertedId) {
-        alert("Package added successfully!");
+        sweetMessage("Package added successfully.")
         reset();
       }
     } catch (error) {
