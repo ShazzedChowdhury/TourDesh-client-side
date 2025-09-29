@@ -68,7 +68,7 @@ const ManageUsers = () => {
                      <td>{user?.userName}</td>
                      <td>{user?.email}</td>
                      <td>
-                       <span className="badge badge-outline">{user.role}</span>
+                       <span className="font-semibold">{user.role}</span>
                      </td>
                      <td>
                        <span

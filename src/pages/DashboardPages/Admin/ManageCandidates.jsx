@@ -45,7 +45,7 @@ const ManageCandidates = () => {
     return <Loading />;
   }
   return (
-    <div className="p-6">
+    <div className="p-6 w-full">
       <h2 className="text-2xl font-semibold mb-4">Manage Candidates</h2>
 
       <div className="overflow-x-auto">
@@ -53,6 +53,7 @@ const ManageCandidates = () => {
           <thead>
             <tr className="bg-gray-100">
               <th>Photo</th>
+              <th>email</th>
               <th>Application Title</th>
               <th>Reason</th>
               <th>CV</th>
@@ -67,9 +68,10 @@ const ManageCandidates = () => {
                   <img
                     src={app.photoURL}
                     alt={app.userName}
-                    className="w-12 h-12 rounded-full"
+                    className="w-10 h-10 rounded-full"
                   />
                 </td>
+                <td>{app.email}</td>
                 <td>{app.title}</td>
                 <td>{app.reason}</td>
                 <td>
@@ -83,7 +85,7 @@ const ManageCandidates = () => {
                   </a>
                 </td>
                 <td>{app.role}</td>
-                <td className="space-x-2">
+                <td className="flex gap-2">
                   <button
                     onClick={() => acceptMutation.mutate(app)}
                     className="btn btn-sm btn-success"
@@ -91,7 +93,7 @@ const ManageCandidates = () => {
                     Accept
                   </button>
                   <button
-                      onClick={() => rejectMutation.mutate(app._id)}
+                    onClick={() => rejectMutation.mutate(app._id)}
                     className="btn btn-sm btn-error"
                   >
                     Reject

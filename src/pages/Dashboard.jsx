@@ -1,9 +1,7 @@
 import { Navigate } from "react-router";
 import useRole from "../hooks/useRole";
 import Loading from "../shared/loading";
-import DonorDashboard from "./DashboardPages/DonorDashboard/DonorDashboard";
-import VolunteerDashboard from "./DashboardPages/VolunteerDashboard/VolunteerDashboard";
-import AdminDashboard from "./DashboardPages/Admin/AdminDashboard";
+import ManageProfile from "./DashboardPages/ManageProfile";
 
 
 export default function Dashboard() {
@@ -13,15 +11,15 @@ export default function Dashboard() {
     return <Loading />;
   }
 
-  if (role === "donor") {
-    return <DonorDashboard /> ;
+  if (role === "tourist") {
+    return <ManageProfile /> ;
   }
-  if (role === "volunteer") {
-    return <VolunteerDashboard />;
+  if (role === "tour guide") {
+    return <ManageProfile />;
   }
 
   if (role === "admin") {
-    return <AdminDashboard />;
+    return <ManageProfile />;
   }
 
   return <Navigate to={"/"} />;

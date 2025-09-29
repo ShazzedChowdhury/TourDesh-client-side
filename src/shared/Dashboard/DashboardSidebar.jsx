@@ -26,8 +26,13 @@ export default function DashboardSidebar() {
       <nav className="flex flex-col gap-4">
         <NavItem
           to="/dashboard"
-          // icon={<Home size={20} />}
-          label="Dashboard"
+          // icon={<List size={20} />}
+          label="Manage profile"
+        />
+        <NavItem
+          to="/dashboard/add-packages"
+          // icon={<List size={20} />}
+          label="Add package"
         />
         <NavItem
           to="/dashboard/manage-users"
@@ -38,16 +43,6 @@ export default function DashboardSidebar() {
           to="/dashboard/manage-candidates"
           // icon={<BookOpen size={20} />}
           label="Manage candidates"
-        />
-        <NavItem
-          to="/dashboard/content-management"
-          // icon={<List size={20} />}
-          label="Content Management"
-        />
-        <NavItem
-          to="/dashboard/profile"
-          // icon={<User size={20} />}
-          label="My Profile"
         />
       </nav>
     );

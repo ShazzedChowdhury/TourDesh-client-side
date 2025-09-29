@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createBrowserRouter } from "react-router";
 import DashboardLayout from "../layouts/DashboardLayout";
 import RootLayout from "../layouts/RootLayout";
@@ -17,6 +16,8 @@ import BlogDetails from "../pages/BlogDetails";
 import AddPackage from "../pages/DashboardPages/Admin/AddPackage";
 import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers";
 import ManageCandidates from "../pages/DashboardPages/Admin/ManageCandidates";
+import ManageProfile from "../pages/DashboardPages/ManageProfile";
+import JoinAsTourGuide from "../pages/DashboardPages/Tourist/JoinAsTourGuide";
 
 
 const mainRoutes = createBrowserRouter([
@@ -73,11 +74,19 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "manage-users",
-        element: <ManageUsers />
+        element: <ManageUsers />,
       },
       {
         path: "manage-candidates",
-        element: <ManageCandidates />
+        element: <ManageCandidates />,
+      },
+      {
+        path: "manage-profile",
+        element: <ManageProfile />,
+      },
+      {
+        path: "join-as-tour-guide",
+        element: <JoinAsTourGuide />
       }
     ],
   },
