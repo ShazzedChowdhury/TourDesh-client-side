@@ -28,7 +28,7 @@ const AllTourGuides = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {tourGuides.map((guide) => (
           <Link
-            to={`tour-guide-profile/${guide._id}`}
+            to={`/tour-guide-profile/${guide._id}`}
             key={guide._id}
             className="bg-white shadow rounded-lg p-4 flex flex-col items-center text-center"
           >

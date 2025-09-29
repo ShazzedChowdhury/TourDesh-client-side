@@ -17,6 +17,7 @@ import AddStories from "../pages/DashboardPages/AddStories";
 import ManageStories from "../pages/DashboardPages/ManageStories";
 import UpdateStories from "../pages/DashboardPages/UpdateStories";
 import PackageDetails from "../pages/PackageDetails";
+import TourGuideProfile from "../pages/TourGuideProfile";
 
 
 const mainRoutes = createBrowserRouter([
@@ -33,7 +34,10 @@ const mainRoutes = createBrowserRouter([
         path: "package-details/:id",
         element: <PackageDetails />,
       },
-      
+      {
+        path: "tour-guide-profile/:id",
+        element: <TourGuideProfile />,
+      },
     ],
   },
   {
@@ -66,20 +70,20 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "join-as-tour-guide",
-        element: <JoinAsTourGuide />
+        element: <JoinAsTourGuide />,
       },
       {
         path: "add-stories",
-        element: <AddStories />
+        element: <AddStories />,
       },
       {
         path: "manage-stories",
-        element: <ManageStories />
+        element: <ManageStories />,
       },
       {
         path: "update-stories/:id",
-        element: <UpdateStories />
-      }
+        element: <UpdateStories />,
+      },
     ],
   },
   {
