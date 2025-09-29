@@ -18,6 +18,7 @@ import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers";
 import ManageCandidates from "../pages/DashboardPages/Admin/ManageCandidates";
 import ManageProfile from "../pages/DashboardPages/ManageProfile";
 import JoinAsTourGuide from "../pages/DashboardPages/Tourist/JoinAsTourGuide";
+import AddStories from "../pages/DashboardPages/AddStories";
 
 
 const mainRoutes = createBrowserRouter([
@@ -87,6 +88,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "join-as-tour-guide",
         element: <JoinAsTourGuide />
+      },
+      {
+        path: "add-stories",
+        element: <AddStories />
       }
     ],
   },

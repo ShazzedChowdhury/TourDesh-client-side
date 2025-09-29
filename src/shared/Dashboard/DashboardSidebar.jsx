@@ -46,7 +46,7 @@ export default function DashboardSidebar() {
         />
       </nav>
     );
-  if (role === "volunteer")
+  if (role === "tour guide")
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
@@ -72,29 +72,23 @@ export default function DashboardSidebar() {
       </nav>
     );
 
-  // donor sidebar
+  // tourist sidebar
   return (
     <nav className="flex flex-col gap-4">
       <NavItem
         to="/dashboard"
-        // icon={<Home size={20} />}
-        label="Dashboard"
-      />
-
-      <NavItem
-        to="/dashboard/my-donation-requests"
-        // icon={<Plus size={20} />}
-        label="My Donation Requests"
-      />
-      <NavItem
-        to="/dashboard/create-donation-request"
         // icon={<List size={20} />}
-        label="Create Donation Request"
+        label="Manage Profile"
       />
       <NavItem
-        to="/dashboard/profile"
-        // icon={<User size={20} />}
-        label="Profile"
+        to="/dashboard/join-as-tour-guide"
+        // icon={<Plus size={20} />}
+        label="Join As Tour Guide"
+      />
+      <NavItem
+        to="/dashboard/add-stories"
+        // icon={<Plus size={20} />}
+        label="Add Stories"
       />
     </nav>
   );
