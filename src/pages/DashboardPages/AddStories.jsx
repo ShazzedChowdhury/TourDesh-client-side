@@ -3,14 +3,19 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
 import sweetMessage from "../../Utils/sweetMessage";
+import useRole from "../../hooks/useRole";
+import Loading from "../../shared/loading";
+import useAuth from "../../hooks/useAuth";
 
 const imageHostingKey = import.meta.env.VITE_imageBB_api_key; // store key in .env
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const AddStories = () => {
   const { register, handleSubmit, reset } = useForm();
+  const {user} = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const {role, loading} = useRole();
   const [uploading, setUploading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -41,6 +46,8 @@ const AddStories = () => {
         title: data.title,
         content: data.content,
         images: imageUrls,
+        addedBy: user?.email,
+        role, 
         createdAt: new Date().toISOString(),
       };
 
@@ -59,6 +66,8 @@ const AddStories = () => {
       setUploading(false);
     }
   };
+
+  if(loading) return <Loading />;
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">

@@ -19,6 +19,7 @@ import ManageCandidates from "../pages/DashboardPages/Admin/ManageCandidates";
 import ManageProfile from "../pages/DashboardPages/ManageProfile";
 import JoinAsTourGuide from "../pages/DashboardPages/Tourist/JoinAsTourGuide";
 import AddStories from "../pages/DashboardPages/AddStories";
+import ManageStories from "../pages/DashboardPages/ManageStories";
 
 
 const mainRoutes = createBrowserRouter([
@@ -92,6 +93,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "add-stories",
         element: <AddStories />
+      },
+      {
+        path: "manage-stories",
+        element: <ManageStories />
       }
     ],
   },

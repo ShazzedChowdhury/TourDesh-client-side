@@ -90,6 +90,11 @@ export default function DashboardSidebar() {
         // icon={<Plus size={20} />}
         label="Add Stories"
       />
+      <NavItem
+        to="/dashboard/manage-stories"
+        // icon={<Plus size={20} />}
+        label="Manage Stories"
+      />
     </nav>
   );
 }
