@@ -3,9 +3,9 @@ import { NavLink } from 'react-router';
 import './navbar.css'
 import NotLoggedIn from '../NotLoggedIn';
 import LoggedIn from '../LoggedIn';
-import LifeDrop from '../../shared/LifeDrop/LifeDrop';
 import sweetMessage from "../../Utils/sweetMessage.js"
 import useAuth from '../../hooks/useAuth.jsx';
+import TourDesh from '../../shared/TourDesh/TourDesh.jsx';
 
 const Navbar = () => {
     const { user, setUser, logOut } = useAuth();
@@ -29,19 +29,14 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/donation-ruquests">Donation Requests</NavLink>
+          <NavLink to="/all-stories">Community</NavLink>
         </li>
         <li>
-          <NavLink to="/blogs">Blogs</NavLink>
+          <NavLink to="/about-us">About Us</NavLink>
         </li>
         <li>
-          <NavLink to="/search">Search</NavLink>
+          <NavLink to="/all-trips">Trips</NavLink>
         </li>
-        {user && (
-          <li>
-            <NavLink to="/pending-assignments">Funding</NavLink>
-          </li>
-        )}
         {!user && (
           <>
             <li>
@@ -94,7 +89,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="flex gap-1 items-center">
-            <LifeDrop />
+            <TourDesh />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

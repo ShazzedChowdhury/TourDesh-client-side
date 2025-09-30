@@ -8,7 +8,7 @@ export default function DashboardSidebar() {
       className={({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg font-medium ${
           isActive
-            ? "bg-red-100 text-primary"
+            ? "bg-[#ddf5f6] text-primary"
             : "text-gray-700 hover:bg-gray-200"
         }`
       }
@@ -25,7 +25,7 @@ export default function DashboardSidebar() {
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
-          to="/dashboard"
+          to="/dashboard/manage-profile"
           // icon={<List size={20} />}
           label="Manage profile"
         />
@@ -50,7 +50,7 @@ export default function DashboardSidebar() {
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
-          to="/dashboard"
+          to="/dashboard/manage-profile"
           // icon={<List size={20} />}
           label="Manage Profile"
         />
@@ -76,7 +76,7 @@ export default function DashboardSidebar() {
   return (
     <nav className="flex flex-col gap-4">
       <NavItem
-        to="/dashboard"
+        to="/dashboard/manage-profile"
         // icon={<List size={20} />}
         label="Manage Profile"
       />

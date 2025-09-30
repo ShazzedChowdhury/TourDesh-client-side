@@ -6,13 +6,13 @@
 @plugin "daisyui/theme" {
     name: "light";
     default: true;
-    --color-primary: #D62828;
+    --color-primary: #3fd0d3;
     --color-secondary: teal;
 }
 
 @plugin "daisyui/theme" {
     name: "dark";
-    --color-primary: #F16623;
+    --color-primary: #3fd0d3;
     --color-secondary: teal;
     --color-gray-600: #ffffff;
     --color-gray-800: #ffffff;

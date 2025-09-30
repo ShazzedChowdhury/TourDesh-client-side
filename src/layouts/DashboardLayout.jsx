@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import DashboardSidebar from "../shared/Dashboard/DashboardSidebar";
-import LifeDrop from "../shared/LifeDrop/LifeDrop";
+import TourDesh from "../shared/TourDesh/TourDesh";
 
 const DashboardLayout = () => {
   return (
@@ -31,7 +31,7 @@ const DashboardLayout = () => {
             </label>
           </div>
           <div className="mx-2 flex-1 px-2">
-            <LifeDrop />
+            <TourDesh />
           </div>
         </div>
         {/* Page content here */}
@@ -49,7 +49,7 @@ const DashboardLayout = () => {
 
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           <div className="mb-2 px-2 py-2 hidden lg:block border-b-2 border-[#2E2E2E]">
-            <LifeDrop />
+            <TourDesh />
           </div>
           <DashboardSidebar />         
         </ul>

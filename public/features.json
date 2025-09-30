@@ -1,25 +1,19 @@
 {
   "section": {
-    "title": "Why Blood Donation Matters",
-    "subtitle": "Save lives, support communities, and make a lasting impact with every drop you give.",
+    "title": "Explore the World with Expert Guides",
+    "subtitle": "Discover breathtaking destinations, hidden gems, and authentic experiences with our trusted tour guides.",
     "features": [
       {
-        "icon": "🩸",
-        "title": "Why Donate Blood?",
-        "description": "Every two seconds, someone needs blood. A single donation can save up to three lives, making you a true lifesaver.",
-        "color": "text-red-600"
+        "title": "Personalized Tours",
+        "description": "Get customized travel plans tailored to your interests, whether it’s history, adventure, or relaxation."
       },
       {
-        "icon": "❤️",
-        "title": "Who Can Donate?",
-        "description": "Healthy individuals aged 18–65, weighing at least 50kg, can donate. It's safe, quick, and highly impactful.",
-        "color": "text-rose-500"
+        "title": "Local Expertise",
+        "description": "Our guides are locals who know the best spots, traditions, and stories that you won’t find in guidebooks."
       },
       {
-        "icon": "⏰",
-        "title": "How Often?",
-        "description": "You can donate whole blood every 3 months. Stay healthy and keep saving lives regularly.",
-        "color": "text-blue-500"
+        "title": "Hassle-Free Travel",
+        "description": "From transport to accommodations, we handle all the details so you can focus on enjoying your journey."
       }
     ]
   }

@@ -20,7 +20,7 @@ const OurPackagesTab = () => {
 
   if(isLoading) return <Loading />
   return (
-    <div className="grid md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm-grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {packages.map((pkg) => (
         <div
           key={pkg._id}
