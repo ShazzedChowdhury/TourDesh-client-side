@@ -20,6 +20,7 @@ import PackageDetails from "../pages/PackageDetails";
 import TourGuideProfile from "../pages/TourGuideProfile";
 import AllTrips from "../pages/AllTripsPackages";
 import MyBookings from "../pages/DashboardPages/Tourist/MyBookings";
+import PaymentPage from "../shared/Dashboard/Payment/PaymentPage";
 
 
 const mainRoutes = createBrowserRouter([
@@ -93,6 +94,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "my-bookings",
         element: <MyBookings />,
+      },
+      {
+        path: "payment/:bookingId",
+        element: <PaymentPage />,
       },
     ],
   },

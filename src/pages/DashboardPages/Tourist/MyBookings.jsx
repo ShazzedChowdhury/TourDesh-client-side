@@ -3,11 +3,12 @@ import { format } from "date-fns";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import sweetMessage from "../../../Utils/sweetMessage";
+import { useNavigate } from "react-router";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-
+  const navigate = useNavigate();
   // Fetch bookings for logged-in user
   const {
     data: bookings = [],
@@ -74,7 +75,9 @@ const MyBookings = () => {
                 <td className="flex gap-2">
                   {b.status === "pending" && (
                     <>
-                      <button className="btn btn-sm btn-success">Pay</button>
+                      <button
+                       onClick={() => navigate(`/dashboard/payment/${b._id}`)}
+                       className="btn btn-sm btn-success">Pay</button>
                       <button
                         onClick={() => handleCancel(b._id)}
                         className="btn btn-sm btn-error"
