@@ -7,7 +7,7 @@ import useAxiosPublic from "../hooks/axiosPublic";
 import Loading from "../shared/loading";
 import useAuth from "../hooks/useAuth";
 
-const AllStories = () => {
+const CommunityPage = () => {
      const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
@@ -81,4 +81,4 @@ const AllStories = () => {
   );
 };
 
-export default AllStories;
+export default CommunityPage;
