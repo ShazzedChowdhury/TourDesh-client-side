@@ -81,6 +81,11 @@ export default function DashboardSidebar() {
         label="Manage Profile"
       />
       <NavItem
+        to="/dashboard/my-bookings"
+        // icon={<List size={20} />}
+        label="My Bookings"
+      />
+      <NavItem
         to="/dashboard/join-as-tour-guide"
         // icon={<Plus size={20} />}
         label="Join As Tour Guide"

@@ -19,6 +19,7 @@ import UpdateStories from "../pages/DashboardPages/UpdateStories";
 import PackageDetails from "../pages/PackageDetails";
 import TourGuideProfile from "../pages/TourGuideProfile";
 import AllTrips from "../pages/AllTripsPackages";
+import MyBookings from "../pages/DashboardPages/Tourist/MyBookings";
 
 
 const mainRoutes = createBrowserRouter([
@@ -88,6 +89,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "update-stories/:id",
         element: <UpdateStories />,
+      },
+      {
+        path: "my-bookings",
+        element: <MyBookings />,
       },
     ],
   },
