@@ -18,6 +18,7 @@ import ManageStories from "../pages/DashboardPages/ManageStories";
 import UpdateStories from "../pages/DashboardPages/UpdateStories";
 import PackageDetails from "../pages/PackageDetails";
 import TourGuideProfile from "../pages/TourGuideProfile";
+import AllTrips from "../pages/AllTripsPackages";
 
 
 const mainRoutes = createBrowserRouter([
@@ -37,6 +38,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "tour-guide-profile/:id",
         element: <TourGuideProfile />,
+      },
+      {
+        path: "all-trips",
+        element: <AllTrips />,
       },
     ],
   },
