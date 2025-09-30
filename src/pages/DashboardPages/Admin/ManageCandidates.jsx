@@ -20,7 +20,7 @@ const ManageCandidates = () => {
   const acceptMutation = useMutation({
     mutationFn: async (application) => {
       // 1. Update user role
-      await axiosSecure.patch(`users/${application.email}`, {
+      await axiosSecure.patch(`users/${application.applicantEmail}`, {
         role: "tour guide",
       });
       // 2. Delete application
@@ -71,7 +71,7 @@ const ManageCandidates = () => {
                     className="w-10 h-10 rounded-full"
                   />
                 </td>
-                <td>{app.email}</td>
+                <td>{app.applicantEmail}</td>
                 <td>{app.title}</td>
                 <td>{app.reason}</td>
                 <td>

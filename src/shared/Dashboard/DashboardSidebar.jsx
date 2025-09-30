@@ -51,23 +51,23 @@ export default function DashboardSidebar() {
       <nav className="flex flex-col gap-4">
         <NavItem
           to="/dashboard"
-          // icon={<Home size={20} />}
-          label="Dashboard"
-        />
-        <NavItem
-          to="/dashboard/all-blood-donation-request"
-          // icon={<BookOpen size={20} />}
-          label="All Donation Requests"
-        />
-        <NavItem
-          to="/dashboard/content-management"
           // icon={<List size={20} />}
-          label="Content Management"
+          label="Manage Profile"
         />
         <NavItem
-          to="/dashboard/profile"
-          // icon={<User size={20} />}
-          label="My Profile"
+          to="/dashboard/my-assigned-tours"
+          // icon={<List size={20} />}
+          label="My Assigned Tours"
+        />
+        <NavItem
+          to="/dashboard/add-stories"
+          // icon={<Plus size={20} />}
+          label="Add Stories"
+        />
+        <NavItem
+          to="/dashboard/manage-stories"
+          // icon={<Plus size={20} />}
+          label="Manage Stories"
         />
       </nav>
     );

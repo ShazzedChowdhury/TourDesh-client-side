@@ -20,7 +20,8 @@ import PackageDetails from "../pages/PackageDetails";
 import TourGuideProfile from "../pages/TourGuideProfile";
 import AllTrips from "../pages/AllTripsPackages";
 import MyBookings from "../pages/DashboardPages/Tourist/MyBookings";
-import PaymentPage from "../shared/Dashboard/Payment/PaymentPage";
+import PaymentPage from "../pages/DashboardPages/Payment/PaymentPage";
+import MyAssignedTours from "../pages/DashboardPages/TourGuide/MyAssignedTours";
 
 
 const mainRoutes = createBrowserRouter([
@@ -94,6 +95,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "my-bookings",
         element: <MyBookings />,
+      },
+      {
+        path: "my-assigned-tours",
+        element: <MyAssignedTours />,
       },
       {
         path: "payment/:bookingId",

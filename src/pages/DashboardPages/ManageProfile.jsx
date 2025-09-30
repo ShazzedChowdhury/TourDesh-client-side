@@ -26,7 +26,7 @@ const ManageProfile = () => {
 
     const { register, handleSubmit, reset} = useForm();
 
-    console.log(user)
+    console.log(role)
     const openModal = () => {
         reset({
           displayName: user.displayName,

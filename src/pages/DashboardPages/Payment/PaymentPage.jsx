@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Loading from "../../loading";
+import Loading from "../../../shared/loading";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { useEffect, useState } from "react";

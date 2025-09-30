@@ -18,6 +18,7 @@ const JoinAsTourGuide = () => {
       reason: data.reason,
       cvLink: data.cvLink,
       applicantEmail: user?.email,
+      photoURL: user?.photoURL,
       applicantName: user?.displayName,
       appliedAt: new Date().toISOString(),
     };
