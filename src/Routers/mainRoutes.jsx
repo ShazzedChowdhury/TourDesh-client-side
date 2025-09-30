@@ -22,6 +22,7 @@ import AllTrips from "../pages/AllTripsPackages";
 import MyBookings from "../pages/DashboardPages/Tourist/MyBookings";
 import PaymentPage from "../pages/DashboardPages/Payment/PaymentPage";
 import MyAssignedTours from "../pages/DashboardPages/TourGuide/MyAssignedTours";
+import AllStories from "../pages/AllStories";
 
 
 const mainRoutes = createBrowserRouter([
@@ -45,6 +46,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "all-trips",
         element: <AllTrips />,
+      },
+      {
+        path: "all-stories",
+        element: <AllStories />,
       },
     ],
   },
