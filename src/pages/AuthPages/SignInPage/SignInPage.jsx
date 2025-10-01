@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import './SignInPage.css'
 import sweetMessage from '../../../Utils/sweetMessage';
@@ -51,8 +51,9 @@ const SignInPage = () => {
             name="password"
             placeholder="Password"
           />
-          <div>
-            <a className="link link-hover">Forgot password?</a>
+          <div onClick={() => navigate({
+            pathname: "/forget-pass",
+          })} className="link link-hover">Forgot password?
           </div>
           <button type="submit" className="btn btn-primary mt-4">
             Login

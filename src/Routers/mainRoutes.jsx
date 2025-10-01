@@ -24,6 +24,7 @@ import PaymentPage from "../pages/DashboardPages/Payment/PaymentPage";
 import MyAssignedTours from "../pages/DashboardPages/TourGuide/MyAssignedTours";
 import AllStories from "../pages/CommunityPage";
 import AboutUsPage from "../pages/AboutUsPage";
+import ForgetPasswordPage from "../pages/AuthPages/ForgetPasswordPage";
 
 
 const mainRoutes = createBrowserRouter([
@@ -127,6 +128,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "/forget-pass",
+        element: <ForgetPasswordPage />
       },
     ],
   },

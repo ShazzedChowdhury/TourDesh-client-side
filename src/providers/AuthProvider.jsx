@@ -4,6 +4,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -48,7 +49,11 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('access-token');
     return signOut(auth);
   };
-   console.log(user);
+
+  const resetPassEmail = (email) => {
+    return sendPasswordResetEmail(auth, email)
+  }
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -84,6 +89,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signIn,
+    resetPassEmail,
     setUser,
     logOut,
     googleSignIn,
