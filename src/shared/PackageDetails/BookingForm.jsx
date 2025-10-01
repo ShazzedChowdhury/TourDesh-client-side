@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import DatePicker from 'react-datepicker';
@@ -6,14 +6,24 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
+import sweetMessage from '../../Utils/sweetMessage';
+import { useWindowSize } from 'react-use';
+import Swal from 'sweetalert2';
 
-const BookingForm = ({ pkg }) => {
+
+const BookingForm = ({ pkg, bookings, setRefetch, setShowConfetti }) => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const { width, height } = useWindowSize();
   const { register, handleSubmit, reset } = useForm();
   const [startDate, setStartDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
+
+  //   const [windowDimensions, setWindowDimensions] = useState({
+  //     width: window.innerWidth,
+  //     height: window.innerWidth,
+  //   });
 
   // Fetch tour guides for dropdown
   const { data: guides = [] } = useQuery({
@@ -23,7 +33,19 @@ const BookingForm = ({ pkg }) => {
       return res.data;
     },
   });
-  console.log(guides)
+
+  // Handle resizing (so confetti always fits screen)
+  //   useEffect(() => {
+  //     const handleResize = () => {
+  //       setWindowDimensions({
+  //         width: window.innerWidth,
+  //         height: window.innerHeight,
+  //       });
+  //     };
+  //     window.addEventListener("resize", handleResize);
+  //     return () => window.removeEventListener("resize", handleResize);
+  //   }, []);
+
   const onSubmit = async (data) => {
     if (!user) {
       return navigate("/login"); // Protect booking
@@ -42,12 +64,28 @@ const BookingForm = ({ pkg }) => {
       createdAt: new Date().toISOString(),
     };
 
-    console.log(booking)
+    console.log(bookings.length);
 
     try {
-      await axiosPublic.post("bookings", booking);
-      reset();
-      setShowModal(true);
+      const res = await axiosPublic.post("bookings", booking);
+      sweetMessage("Booking successfull.");
+      if (res.data.insertedId) {
+        reset();
+        setRefetch(true);
+        setTimeout(() => {
+          if (bookings.length > 2) {
+            setShowConfetti(true);
+            Swal.fire(`Congratulation
+                      You have booked ${bookings.length + 1}`
+            ).then((result) => {
+                if(result.isConfirmed) {
+                     setShowConfetti(false);
+                      setShowModal(true);
+                }
+            })
+          }
+        }, 1000);
+      }
     } catch (err) {
       console.error("Booking failed:", err);
     }

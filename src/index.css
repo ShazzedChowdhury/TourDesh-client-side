@@ -3,6 +3,14 @@
     themes: light --default, dark --prefersdark
 }
 
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 @plugin "daisyui/theme" {
     name: "light";
     default: true;

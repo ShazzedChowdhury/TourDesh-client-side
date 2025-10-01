@@ -1,14 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { useParams } from 'react-router';
-import useAxiosPublic from '../hooks/useAxiosPublic';
-import AllTourGuides from '../shared/PackageDetails/AllTourGuides';
-import BookingForm from '../shared/PackageDetails/BookingForm';
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import AllTourGuides from "../shared/PackageDetails/AllTourGuides";
+import BookingForm from "../shared/PackageDetails/BookingForm";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 
 const PackageDetails = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-const [activeIndex, setActiveIndex] = useState(null);
+  const axiosSecure = useAxiosSecure();
+  const [bookings, setBookings] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [refetch, setRefetch] = useState(false);
+  const { width, height } = useWindowSize();
 
   // Fetch package details
   const { data: pkg = {}, isLoading } = useQuery({
@@ -19,15 +29,27 @@ const [activeIndex, setActiveIndex] = useState(null);
     },
   });
 
+  useEffect(() => {
+    try {
+      const fetchBookings = async () => {
+        const res = await axiosSecure(`/bookings?email=${user.email}`);
+        setBookings(res.data);
+      };
+
+      fetchBookings();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, [user, refetch]);
+
   const toggleIndex = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-
   if (isLoading) return <p>Loading...</p>;
-  console.log(pkg.tourPlans)
+  console.log(pkg.tourPlans);
   return (
-    <div className="max-w-6xl mx-auto p-6 ">
+    <div className="max-w-6xl mx-auto p-6">
       {/* Gallery Section */}
       <section className="mb-10 bg-base-100 shadow-lg p-5 rounded-md">
         <h2 className="text-2xl font-bold mb-4">Gallery</h2>
@@ -77,7 +99,18 @@ const [activeIndex, setActiveIndex] = useState(null);
       </section>
 
       <AllTourGuides />
-      <BookingForm pkg={pkg} />
+      <BookingForm
+        bookings={bookings}
+        setRefetch={setRefetch}
+        pkg={pkg}
+        setShowConfetti={setShowConfetti}
+      />
+
+      {showConfetti && (
+        <div className="fixed top-0 right-0 w-full h-screen z-100">
+          <Confetti width={width} height={height} />
+        </div>
+      )}
     </div>
   );
 };
