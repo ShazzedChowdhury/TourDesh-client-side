@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import useAxiosPublic from '../../hooks/axiosPublic';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from 'react-router';

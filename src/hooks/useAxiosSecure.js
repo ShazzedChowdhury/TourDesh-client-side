@@ -6,16 +6,12 @@ const useAxiosSecure = () => {
   const { user } = useAuth();
   const accessToken = localStorage.getItem("access-token")
   const instance = axios.create({
-    baseURL: "https://tour-desh-server-side.vercel.app/",
+    baseURL: "http://localhost:5000/",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
-
-  useEffect(() => {
-  }, [])
-  
 
   return instance;
 };

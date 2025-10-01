@@ -7,7 +7,7 @@ import Social from "../../components/Social";
 import Title from "../../components/Title";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../hooks/axiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -49,15 +49,11 @@ const Register = () => {
         email: data.email,
         userName: data.name,
         photoURL: avatarURL,
-        role: 'tourist',
-        status: "active",
       };
 
       //create account with firebase
       createUser(userData.email, data.password)
         .then(async (result) => {
-          // Send to your backend API
-          await axiosPublic.post("/add-user", userData);
 
           //update user to the firebase
           updateUser({ displayName: userData.userName, photoURL: userData.photoURL })

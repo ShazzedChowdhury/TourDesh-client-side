@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import useAxiosPublic from '../hooks/axiosPublic';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 import AllTourGuides from '../shared/PackageDetails/AllTourGuides';
 import BookingForm from '../shared/PackageDetails/BookingForm';
 

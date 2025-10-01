@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import CountUp from "react-countup";
-import useAxiosPublic from "../../hooks/axiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const OverviewSection = () => {
   const axiosPublic = useAxiosPublic();

@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/axiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../shared/loading";
 import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";

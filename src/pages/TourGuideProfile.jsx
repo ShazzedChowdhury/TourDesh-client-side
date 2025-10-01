@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router';
-import useAxiosPublic from '../hooks/axiosPublic';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 import TourGuideStories from '../shared/TourGuideStories/TourGuideStories';
 
 const TourGuideProfile = () => {

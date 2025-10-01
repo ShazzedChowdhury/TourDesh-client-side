@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import useAxiosPublic from "../hooks/axiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import Loading from "../shared/loading";
 import { Link } from "react-router";
 

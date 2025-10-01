@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../loading";
-import useAxiosPublic from "../../hooks/axiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router";
 
 

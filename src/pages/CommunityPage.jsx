@@ -3,7 +3,7 @@ import "swiper/css";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-import useAxiosPublic from "../hooks/axiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import Loading from "../shared/loading";
 import useAuth from "../hooks/useAuth";
 

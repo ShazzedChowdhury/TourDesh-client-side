@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import './SignInPage.css'
 import sweetMessage from '../../../Utils/sweetMessage';
 import useAuth from '../../../hooks/useAuth';
+import GoogleSignIn from '../../../shared/GoogleSignIn/GoogleSignIn';
 const SignInPage = () => {
     const { signIn, setUser } = useAuth();
     const navigate = useNavigate()
@@ -53,7 +54,9 @@ const SignInPage = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button type='submit' className="btn btn-primary mt-4">Login</button>
+          <button type="submit" className="btn btn-primary mt-4">
+            Login
+          </button>
         </form>
         <p className="text-sm">
           Don't have any account?
@@ -62,6 +65,8 @@ const SignInPage = () => {
           </Link>{" "}
           now.
         </p>
+        <div className="divider">OR</div>
+        <GoogleSignIn />
       </div>
     );
 };
