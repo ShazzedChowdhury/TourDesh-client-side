@@ -16,7 +16,7 @@ import JoinAsTourGuide from "../pages/DashboardPages/Tourist/JoinAsTourGuide";
 import AddStories from "../pages/DashboardPages/AddStories";
 import ManageStories from "../pages/DashboardPages/ManageStories";
 import UpdateStories from "../pages/DashboardPages/UpdateStories";
-import PackageDetails from "../pages/PackageDetails";
+import PackageDetails from "../pages/PackageDetails/PackageDetails";
 import TourGuideProfile from "../pages/TourGuideProfile";
 import AllTrips from "../pages/AllTripsPackages";
 import MyBookings from "../pages/DashboardPages/Tourist/MyBookings";

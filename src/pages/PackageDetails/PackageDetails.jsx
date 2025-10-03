@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import useAxiosPublic from "../hooks/useAxiosPublic";
-import AllTourGuides from "../shared/PackageDetails/AllTourGuides";
-import BookingForm from "../shared/PackageDetails/BookingForm";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import useAuth from "../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import AllTourGuides from "./AllTourGuides";
+import BookingForm from "./BookingForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 

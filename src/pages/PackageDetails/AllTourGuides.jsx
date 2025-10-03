@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../loading";
+import Loading from "../../shared/loading";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router";
 

@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import Select from "react-select";
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Pagination from '../../../shared/Pagination/Pagination';
+
 
 const roleOptions = [
   { value: "all", label: "All" },
@@ -14,16 +16,17 @@ const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRole, setSelectedRole] = useState(roleOptions[0]);
+  const [ page, setPage ] = useState(1);
 
   // Fetch users with search + role filter
   const {
-    data: users = [],
+    data,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", searchTerm, selectedRole],
+    queryKey: ["users", searchTerm, selectedRole, page],
     queryFn: async () => {
-      let url = `users?search=${searchTerm}`;
+      let url = `users?search=${searchTerm}&page=${page}&limit=${10}`;
        if (selectedRole.value !== "all") {
          url += `&role=${selectedRole.value}`;
        }
@@ -81,14 +84,14 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 ? (
+            {data?.users?.length === 0 ? (
               <tr>
                 <td colSpan="5" className="text-center py-4">
                   No users found
                 </td>
               </tr>
             ) : (
-              users.map((user) => (
+              data?.users.map((user) => (
                 <tr key={user?._id}>
                   <td>
                     <img
@@ -119,6 +122,13 @@ const ManageUsers = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={data?.page}
+        totalPages={data?.pages}
+        onPageChange={setPage}
+      />
     </div>
   );
 };
