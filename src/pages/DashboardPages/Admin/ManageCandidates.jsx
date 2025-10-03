@@ -1,17 +1,19 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Loading from '../../../shared/loading';
+import Pagination from '../../../shared/Pagination/Pagination';
 
 const ManageCandidates = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+  const [ page, setPage ] = useState(1);
 
   //Fetch all applications
-  const { data: applications = [], isLoading } = useQuery({
-    queryKey: ["applications"],
+  const { data, isLoading } = useQuery({
+    queryKey: ["applications", page],
     queryFn: async () => {
-      const res = await axiosSecure.get("/applications");
+      const res = await axiosSecure.get(`/applications?page=${page}&limit=${10}`);
       return res.data;
     },
   });
@@ -62,7 +64,7 @@ const ManageCandidates = () => {
             </tr>
           </thead>
           <tbody>
-            {applications.map((app) => (
+            {data?.applications.map((app) => (
               <tr key={app._id}>
                 <td>
                   <img
@@ -104,6 +106,11 @@ const ManageCandidates = () => {
           </tbody>
         </table>
       </div>
+      <Pagination 
+        currentPage={data?.page}
+        totalPages={data?.pages}
+        onPageChange={setPage}
+        />
     </div>
   );
 };
