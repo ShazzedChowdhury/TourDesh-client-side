@@ -2,6 +2,7 @@ import React from 'react';
 import { BiSolidBadgeCheck } from "react-icons/bi";
 import bannerImg from "../../../assets/images/Banner-img.png"
 import { useNavigate } from 'react-router';
+import useRole from '../../../hooks/useRole';
 
 
 const BannerSection = () => {
@@ -22,17 +23,17 @@ const BannerSection = () => {
             </p>
 
             <div className="flex gap-5 items-center">
+                <button
+                  onClick={() => navigate("/dashboard/join-as-tour-guide")}
+                  className="btn  btn-primary"
+                >
+                  Join as tour guide
+                </button>
               <button
-                onClick={() => navigate("/register")}
-                className="btn  btn-primary"
-              >
-                Join as a donor
-              </button>
-              <button
-                onClick={() => navigate("/search")}
+                onClick={() => navigate("/all-trips")}
                 className="btn btn-outline btn-primary"
               >
-                Search Donors
+                All packages
               </button>
             </div>
           </div>

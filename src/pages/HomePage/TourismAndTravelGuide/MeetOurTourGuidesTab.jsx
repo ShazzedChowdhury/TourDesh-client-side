@@ -22,7 +22,7 @@ const MeetOurTourGuidesTab = () => {
     return (
       <motion.div
        className="grid md:grid-cols-3 lg:grid-cols-4 gap-6"
-       initial={{ opacity: 0, y: 0 }}
+       initial={{ opacity: 0, y: 60 }}
        whileInView={{ opacity: 1, y: 0 }}
        transition={{ duration: 0.8, ease: "easeOut"}}
        viewport={{ once: true}}
