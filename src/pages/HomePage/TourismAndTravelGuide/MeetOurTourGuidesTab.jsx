@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../shared/loading';
+import { motion } from "framer-motion";
 
 const MeetOurTourGuidesTab = () => {
     const axiosSecure = useAxiosSecure();
@@ -19,7 +20,13 @@ const MeetOurTourGuidesTab = () => {
 
       if(isLoading) return <Loading />
     return (
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <motion.div
+       className="grid md:grid-cols-3 lg:grid-cols-4 gap-6"
+       initial={{ opacity: 0, y: 0 }}
+       whileInView={{ opacity: 1, y: 0 }}
+       transition={{ duration: 0.8, ease: "easeOut"}}
+       viewport={{ once: true}}
+       >
         {guides.map((guide) => (
           <div
             key={guide._id}
@@ -43,7 +50,7 @@ const MeetOurTourGuidesTab = () => {
             </button>
           </div>
         ))}
-      </div>
+      </motion.div>
     );
 };
 

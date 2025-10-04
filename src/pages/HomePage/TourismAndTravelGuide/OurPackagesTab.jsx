@@ -5,6 +5,7 @@ import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
+import { motion } from "framer-motion";
 
 const OurPackagesTab = () => {
     const axiosSecure = useAxiosSecure();
@@ -20,7 +21,13 @@ const OurPackagesTab = () => {
 
   if(isLoading) return <Loading />
   return (
-    <div className="grid grid-cols-1 sm-grid-cols-2 md:grid-cols-3  gap-6">
+    <motion.div
+     className="grid grid-cols-1 sm-grid-cols-2 md:grid-cols-3  gap-6"
+     initial={{ opacity: 0, y: 60}}
+     whileInView={{ opacity: 1, y: 0 }}
+     transition={{ duration: 0.8, ease: "easeOut"}}
+     viewport={{ once: true, amount: 0.3}}
+     >
       {packages.map((pkg) => (
         <div
           key={pkg._id}
@@ -50,7 +57,7 @@ const OurPackagesTab = () => {
           </button>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

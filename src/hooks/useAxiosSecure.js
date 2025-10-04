@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
 import useAuth from "./useAuth";
 
 const useAxiosSecure = () => {
