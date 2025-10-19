@@ -22,11 +22,6 @@ body,
     name: "dark";
     --color-primary: #3fd0d3;
     --color-secondary: teal;
-    --color-gray-600: #ffffff;
-    --color-gray-800: #ffffff;
-    --color-gray-900: #ffffff;
-    --color-gray-500: #ffffff;
-    --color-deep-purple-accent-400: #ffffff;
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

@@ -6,6 +6,7 @@ import LoggedIn from '../LoggedIn';
 import sweetMessage from "../../Utils/sweetMessage.js"
 import useAuth from '../../hooks/useAuth.jsx';
 import TourDesh from '../../shared/TourDesh/TourDesh.jsx';
+import ToggleButton from '../ToggleButton/ToggleButton.jsx';
 
 const Navbar = () => {
     const { user, setUser, logOut } = useAuth();
@@ -96,11 +97,14 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-5">
-          {user ? (
-            <LoggedIn handleUserLogOut={handleUserLogOut} />
-          ) : (
-            <NotLoggedIn />
-          )}
+          <ToggleButton />
+          <div className="flex gap-2">
+            {user ? (
+              <LoggedIn handleUserLogOut={handleUserLogOut} />
+            ) : (
+              <NotLoggedIn />
+            )}
+          </div>
         </div>
       </div>
     );
