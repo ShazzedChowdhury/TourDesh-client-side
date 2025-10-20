@@ -1,113 +1,246 @@
-import React from 'react';
-import { NavLink } from 'react-router';
-import './navbar.css'
-import NotLoggedIn from '../NotLoggedIn';
-import LoggedIn from '../LoggedIn';
-import sweetMessage from "../../Utils/sweetMessage.js"
-import useAuth from '../../hooks/useAuth.jsx';
-import TourDesh from '../../shared/TourDesh/TourDesh.jsx';
-import ToggleButton from '../ToggleButton/ToggleButton.jsx';
+// import React from 'react';
+// import { NavLink } from 'react-router';
+// import './navbar.css'
+// import NotLoggedIn from '../NotLoggedIn';
+// import LoggedIn from '../LoggedIn';
+// import sweetMessage from "../../Utils/sweetMessage.js"
+// import useAuth from '../../hooks/useAuth.jsx';
+// import TourDesh from '../../shared/TourDesh/TourDesh.jsx';
+// import ToggleButton from '../ToggleButton/ToggleButton.jsx';
+
+// const Navbar = () => {
+//     const { user, setUser, logOut } = useAuth();
+
+//   console.log(user)
+//     const handleUserLogOut = () => {
+//       logOut()
+//         .then(() => {
+//           sweetMessage("logged out successfully", "success");
+//           setUser(null);
+//         })
+//         .catch((error) => {
+//           sweetMessage("Somethings went wrong. try again.");
+//         });
+//     };
+
+
+//     const links = (
+//       <>
+//         <li>
+//           <NavLink to="/">Home</NavLink>
+//         </li>
+//         <li>
+//           <NavLink to="/all-stories">Community</NavLink>
+//         </li>
+//         <li>
+//           <NavLink to="/about-us">About Us</NavLink>
+//         </li>
+//         <li>
+//           <NavLink to="/all-trips">Trips</NavLink>
+//         </li>
+//         {!user && (
+//           <>
+//             <li>
+//               <NavLink to="/sign-in" className="block md:hidden">
+//                 Sign In
+//               </NavLink>
+//             </li>
+//             <li>
+//               <NavLink to="/register" className="block md:hidden">
+//                 Register
+//               </NavLink>
+//             </li>
+//           </>
+//         )}
+//         {user && (
+//           <li>
+//             <button onClick={handleUserLogOut} className="block md:hidden">
+//               Logout
+//             </button>
+//           </li>
+//         )}
+//       </>
+//     );
+//     return (
+//       <div className="navbar bg-base-100 shadow-sm px-5 py-5 md:px-10 lg:px-30">
+//         <div className="navbar-start">
+//           <div className="dropdown">
+//             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+//               <svg
+//                 xmlns="http://www.w3.org/2000/svg"
+//                 className="h-5 w-5"
+//                 fill="none"
+//                 viewBox="0 0 24 24"
+//                 stroke="currentColor"
+//               >
+//                 {" "}
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   strokeWidth="2"
+//                   d="M4 6h16M4 12h8m-8 6h16"
+//                 />{" "}
+//               </svg>
+//             </div>
+//             <ul
+//               tabIndex={0}
+//               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+//             >
+//               {links}
+//             </ul>
+//           </div>
+//           <a className="flex gap-1 items-center">
+//             <TourDesh />
+//           </a>
+//         </div>
+//         <div className="navbar-center hidden lg:flex">
+//           <ul className="menu menu-horizontal px-1">{links}</ul>
+//         </div>
+//         <div className="navbar-end gap-5">
+//           <ToggleButton />
+//           <div className="flex gap-2">
+//             {user ? (
+//               <LoggedIn handleUserLogOut={handleUserLogOut} />
+//             ) : (
+//               <NotLoggedIn />
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     );
+// };
+
+// export default Navbar;
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router";
+import "./navbar.css";
+import NotLoggedIn from "../NotLoggedIn";
+import LoggedIn from "../LoggedIn";
+import sweetMessage from "../../Utils/sweetMessage.js";
+import useAuth from "../../hooks/useAuth.jsx";
+import TourDesh from "../../shared/TourDesh/TourDesh.jsx";
+import ToggleButton from "../ToggleButton/ToggleButton.jsx";
 
 const Navbar = () => {
-    const { user, setUser, logOut } = useAuth();
+  const { user, setUser, logOut } = useAuth();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  console.log(user)
-    const handleUserLogOut = () => {
-      logOut()
-        .then(() => {
-          sweetMessage("logged out successfully", "success");
-          setUser(null);
-        })
-        .catch((error) => {
-          sweetMessage("Somethings went wrong. try again.");
-        });
+  //  Handle scroll state
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  const handleUserLogOut = () => {
+    logOut()
+      .then(() => {
+        sweetMessage("logged out successfully", "success");
+        setUser(null);
+      })
+      .catch(() => {
+        sweetMessage("Something went wrong. Try again.");
+      });
+  };
 
-    const links = (
-      <>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/all-stories">Community</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about-us">About Us</NavLink>
-        </li>
-        <li>
-          <NavLink to="/all-trips">Trips</NavLink>
-        </li>
-        {!user && (
-          <>
-            <li>
-              <NavLink to="/sign-in" className="block md:hidden">
-                Sign In
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/register" className="block md:hidden">
-                Register
-              </NavLink>
-            </li>
-          </>
-        )}
-        {user && (
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/all-stories">Community</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about-us">About Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/all-trips">Trips</NavLink>
+      </li>
+      {!user && (
+        <>
           <li>
-            <button onClick={handleUserLogOut} className="block md:hidden">
-              Logout
-            </button>
+            <NavLink to="/sign-in" className="block md:hidden">
+              Sign In
+            </NavLink>
           </li>
-        )}
-      </>
-    );
-    return (
-      <div className="navbar bg-base-100 shadow-sm px-5 py-5 md:px-10 lg:px-30">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          <li>
+            <NavLink to="/register" className="block md:hidden">
+              Register
+            </NavLink>
+          </li>
+        </>
+      )}
+      {user && (
+        <li>
+          <button onClick={handleUserLogOut} className="block md:hidden">
+            Logout
+          </button>
+        </li>
+      )}
+    </>
+  );
+
+  return (
+    <div
+      className={`navbar fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-base-100/90 backdrop-blur-md shadow-md"
+          : "bg-base-100 shadow-sm"
+      } px-5 py-4 md:px-10 lg:px-30`}
+    >
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              {links}
-            </ul>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
           </div>
-          <a className="flex gap-1 items-center">
-            <TourDesh />
-          </a>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            {links}
+          </ul>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
-        </div>
-        <div className="navbar-end gap-5">
-          <ToggleButton />
-          <div className="flex gap-2">
-            {user ? (
-              <LoggedIn handleUserLogOut={handleUserLogOut} />
-            ) : (
-              <NotLoggedIn />
-            )}
-          </div>
+        <a className="flex gap-1 items-center">
+          <TourDesh />
+        </a>
+      </div>
+
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      <div className="navbar-end gap-5">
+        <ToggleButton />
+        <div className="flex gap-2">
+          {user ? (
+            <LoggedIn handleUserLogOut={handleUserLogOut} />
+          ) : (
+            <NotLoggedIn />
+          )}
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Navbar;
