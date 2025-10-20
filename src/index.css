@@ -25,4 +25,15 @@ body,
     --color-secondary: teal;
 }
 
+[data-theme="light"] {
+    .title {
+       color: #0C264C;
+    }
+}
+[data-theme="dark"] {
+    .title {
+       color: #ffffff;
+    }
+}
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
