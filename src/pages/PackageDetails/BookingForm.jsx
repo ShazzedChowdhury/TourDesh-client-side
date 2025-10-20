@@ -92,92 +92,93 @@ const BookingForm = ({ pkg, bookings, setRefetch, setShowConfetti }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Book This Package</h2>
+    <div className="max-w-7xl mx-auto p-6 bg-white shadow rounded-lg">
+      <h2 className="text-2xl font-bold mb-4 text-left">Book This Package</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Package Name */}
-        <div>
-          <label className="block mb-1 font-semibold">Package Name</label>
-          <input
-            type="text"
-            value={pkg.title}
-            readOnly
-            className="input input-bordered w-full"
-          />
-        </div>
+        <div className="grid grid-cols-2 gap-5">
+          {/* Package Name */}
+          <div>
+            <label className="block mb-1 font-semibold">Package Name</label>
+            <input
+              type="text"
+              value={pkg.title}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Tourist Name */}
-        <div>
-          <label className="block mb-1 font-semibold">Tourist Name</label>
-          <input
-            type="text"
-            defaultValue={user?.displayName}
-            readOnly
-            className="input input-bordered w-full"
-          />
-        </div>
+          {/* Tourist Name */}
+          <div>
+            <label className="block mb-1 font-semibold">Tourist Name</label>
+            <input
+              type="text"
+              defaultValue={user?.displayName}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Tourist Email */}
-        <div>
-          <label className="block mb-1 font-semibold">Tourist Email</label>
-          <input
-            type="email"
-            defaultValue={user?.email}
-            readOnly
-            className="input input-bordered w-full"
-          />
-        </div>
+          {/* Tourist Email */}
+          <div>
+            <label className="block mb-1 font-semibold">Tourist Email</label>
+            <input
+              type="email"
+              defaultValue={user?.email}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Tourist Image */}
-        <div>
-          <label className="block mb-1 font-semibold">Tourist Image</label>
-          <input
-            type="text"
-            defaultValue={user?.photoURL}
-            readOnly
-            className="input input-bordered w-full"
-          />
-        </div>
+          {/* Tourist Image */}
+          <div>
+            <label className="block mb-1 font-semibold">Tourist Image</label>
+            <input
+              type="text"
+              defaultValue={user?.photoURL}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Price */}
-        <div>
-          <label className="block mb-1 font-semibold">Price</label>
-          <input
-            type="text"
-            value={`$${pkg.price}`}
-            readOnly
-            className="input input-bordered w-full"
-          />
-        </div>
+          {/* Price */}
+          <div>
+            <label className="block mb-1 font-semibold">Price</label>
+            <input
+              type="text"
+              value={`$${pkg.price}`}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Tour Date */}
-        <div>
-          <label className="block mb-1 font-semibold">Tour Date</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            className="input input-bordered w-full"
-            dateFormat="yyyy-MM-dd"
-            minDate={new Date()} // prevent past dates
-          />
-        </div>
+          {/* Tour Date */}
+          <div>
+            <label className="block mb-1 font-semibold">Tour Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              className="input input-bordered w-full"
+              dateFormat="yyyy-MM-dd"
+              minDate={new Date()} // prevent past dates
+            />
+          </div>
 
-        {/* Guide Name */}
-        <div>
-          <label className="block mb-1 font-semibold">Tour Guide</label>
-          <select
-            {...register("guideEmail")}
-            className="select select-bordered w-full"
-          >
-            <option value="">Select a Guide</option>
-            {guides.map((guide) => (
-              <option key={guide._id} value={guide.email}>
-                {guide.userName}
-              </option>
-            ))}
-          </select>
+          {/* Guide Name */}
+          <div>
+            <label className="block mb-1 font-semibold">Tour Guide</label>
+            <select
+              {...register("guideEmail")}
+              className="select select-bordered w-full"
+            >
+              <option value="">Select a Guide</option>
+              {guides.map((guide) => (
+                <option key={guide._id} value={guide.email}>
+                  {guide.userName}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-
         {/* Submit Button */}
         <button type="submit" className="btn btn-primary w-full">
           Book Now
