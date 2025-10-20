@@ -6,6 +6,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../shared/loading";
 import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import Section from "../../components/Section";
+import Title from "../../components/Title";
 
 const TouristStorySection = () => {
   const navigate = useNavigate();
@@ -20,74 +22,79 @@ const TouristStorySection = () => {
     },
   });
 
-  if(isLoading) return <Loading />
+  if (isLoading) return <Loading />;
 
-  console.log(stories[0].images[0]);
   return (
-    <section className="my-12 max-w-7xl mx-auto p-5 md:p-10">
-      <h2 className="text-3xl font-bold mb-6 text-center">Tourist Stories</h2>
+    <>
+      <Title
+        title={"Explore Their Journeys"}
+        subtitle={
+          "Real travel stories that take you around the world and inspire your next adventure."
+        }
+      />
+      <Section>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {stories.map((story) => (
+            <div
+              key={story._id}
+              className="bg-base-100 rounded-xl shadow-md overflow-hidden flex flex-col"
+            >
+              {/* Swiper for multiple images */}
+              <div>
+                <Swiper spaceBetween={10} slidesPerView={1}>
+                  {story.images.map((img, idx) => (
+                    <SwiperSlide key={idx}>
+                      <div className="w-60 h-60 mx-auto relative">
+                        <img
+                          src={img}
+                          alt={story.title}
+                          className="w-full h-full object-cover rounded"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stories.map((story) => (
-          <div
-            key={story._id}
-            className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col"
-          >
-            {/* Swiper for multiple images */}
-            <div>
-              <Swiper spaceBetween={10} slidesPerView={1}>
-                {story.images.map((img, idx) => (
-                  <SwiperSlide key={idx}>
-                    <div className="w-48 h-48 mx-auto">
-                      <img
-                        src={img}
-                        alt={story.title}
-                        className="w-full h-full object-cover rounded"
-                      />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+              <div className="p-4 flex flex-col flex-grow">
+                <h3 className="text-lg font-semibold mb-2">{story.title}</h3>
+                <p className="text-gray-600 mb-4 flex-grow">{story.content}</p>
 
-            <div className="p-4 flex flex-col flex-grow">
-              <h3 className="text-lg font-semibold mb-2">{story.title}</h3>
-              <p className="text-gray-600 mb-4 flex-grow">{story.content}</p>
-
-              {!user ? (
-                <button
-                  onClick={() => navigate("/login")}
-                  className="btn btn-primary btn-outline"
-                >
-                  login
-                </button>
-              ) : (
-                <div className="flex items-center  mt-auto btn bg-blue-600 text-white">
-                  {/* Facebook Share Button */}
-                  <FacebookShareButton
-                    url={window.location.href}
-                    quote={story.title}
-                    className="hover:opacity-80"
+                {!user ? (
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="btn btn-primary btn-outline"
                   >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-                  Share On Facebook
-                </div>
-              )}
+                    login
+                  </button>
+                ) : (
+                  <div className="flex items-center  mt-auto btn bg-blue-600 text-white">
+                    {/* Facebook Share Button */}
+                    <FacebookShareButton
+                      url={window.location.href}
+                      quote={story.title}
+                      className="hover:opacity-80"
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                    Share On Facebook
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="mt-8 text-center">
-        <button
-          onClick={() => navigate("/all-stories")}
-          className="bg-primary text-white px-6 py-2 rounded-lg"
-        >
-          All Stories
-        </button>
-      </div>
-    </section>
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => navigate("/all-stories")}
+            className="bg-primary text-white px-6 py-2 rounded-lg"
+          >
+            All Stories
+          </button>
+        </div>
+      </Section>
+    </>
   );
 };
 

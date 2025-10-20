@@ -21,7 +21,7 @@ const MeetOurTourGuidesTab = () => {
       if(isLoading) return <Loading />
     return (
       <motion.div
-       className="grid md:grid-cols-3 lg:grid-cols-4 gap-6"
+       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
        initial={{ opacity: 0, y: 60 }}
        whileInView={{ opacity: 1, y: 0 }}
        transition={{ duration: 0.8, ease: "easeOut"}}
@@ -37,8 +37,8 @@ const MeetOurTourGuidesTab = () => {
               alt={guide.userName}
               className="w-24 h-24 mx-auto rounded-full mb-3 object-cover"
             />
-            <h3 className="text-lg font-bold">{guide.userName}</h3>
-            <p className="text-sm text-gray-500">{guide.email}</p>
+            <h3 className="text-sm sm:text-lg font-bold">{guide.userName}</h3>
+            <p className="text-[0.7rem] sm:text-sm text-gray-500">{guide.email}</p>
             <p className="badge block mx-auto badge-success mt-1">
               {guide.role}
             </p>
