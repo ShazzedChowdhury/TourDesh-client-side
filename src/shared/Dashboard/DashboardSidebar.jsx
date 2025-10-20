@@ -25,6 +25,11 @@ export default function DashboardSidebar() {
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
+          to="/dashboard/overview"
+          // icon={<List size={20} />}
+          label="Overview"
+        />
+        <NavItem
           to="/dashboard/manage-profile"
           // icon={<List size={20} />}
           label="Manage profile"
@@ -75,6 +80,11 @@ export default function DashboardSidebar() {
   // tourist sidebar
   return (
     <nav className="flex flex-col gap-4">
+      <NavItem
+        to="/dashboard/Overview"
+        // icon={<List size={20} />}
+        label="Overview"
+      />
       <NavItem
         to="/dashboard/manage-profile"
         // icon={<List size={20} />}

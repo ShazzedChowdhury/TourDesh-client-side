@@ -2,6 +2,7 @@ import { Navigate } from "react-router";
 import useRole from "../hooks/useRole";
 import Loading from "../shared/loading";
 import ManageProfile from "./DashboardPages/ManageProfile";
+import OverviewPage from "./DashboardPages/OverviewPage/OverviewPage";
 
 
 export default function Dashboard() {
@@ -12,14 +13,14 @@ export default function Dashboard() {
   }
 
   if (role === "tourist") {
-    return <ManageProfile /> ;
+    return <OverviewPage /> ;
   }
   if (role === "tour guide") {
     return <ManageProfile />;
   }
 
   if (role === "admin") {
-    return <ManageProfile />;
+    return <OverviewPage />;
   }
 
   return <Navigate to={"/"} />;

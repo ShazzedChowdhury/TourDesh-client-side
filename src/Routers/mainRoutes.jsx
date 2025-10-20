@@ -25,6 +25,7 @@ import MyAssignedTours from "../pages/DashboardPages/TourGuide/MyAssignedTours";
 import AllStories from "../pages/CommunityPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import ForgetPasswordPage from "../pages/AuthPages/ForgetPasswordPage";
+import OverviewPage from "../pages/DashboardPages/OverviewPage/OverviewPage";
 
 
 const mainRoutes = createBrowserRouter([
@@ -78,6 +79,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "overview",
+        element: <OverviewPage />,
       },
       {
         path: "manage-candidates",

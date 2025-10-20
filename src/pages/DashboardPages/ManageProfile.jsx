@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Loading from '../../shared/loading';
 import { useForm } from 'react-hook-form';
 import sweetMessage from '../../Utils/sweetMessage';
 import { useNavigate } from 'react-router';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const ManageProfile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,13 +16,7 @@ const ManageProfile = () => {
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
-    const { data: stats = [], isloading } = useQuery({
-        queryKey: ["stats"],
-        queryFn: async() => {
-            const res = await axiosSecure.get("admin-stats");
-            return res.data;
-        }
-    })
+   
 
     const { register, handleSubmit, reset} = useForm();
 
@@ -93,10 +87,6 @@ const ManageProfile = () => {
         }
     }
 
-    if(isloading || loading) {
-        return <Loading />
-    }
-
     return (
       <div className="p-6 space-y-6">
         {/* Welcome Message */}
@@ -104,34 +94,6 @@ const ManageProfile = () => {
           Welcome Back,{" "}
           <span className="text-blue-600">{user?.displayName}</span> 🎉
         </h2>
-
-        {/* Admin Stats Section */}
-        {role === "admin" && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="stat bg-white shadow p-4 rounded-xl">
-              <h3 className="font-semibold">Total Payment</h3>
-              <p className="text-xl font-bold text-green-600">
-                ${stats.totalPayment || 0}
-              </p>
-            </div>
-            <div className="stat bg-white shadow p-4 rounded-xl">
-              <h3 className="font-semibold">Total Tour Guides</h3>
-              <p className="text-xl font-bold">{stats.totalGuides || 0}</p>
-            </div>
-            <div className="stat bg-white shadow p-4 rounded-xl">
-              <h3 className="font-semibold">Total Packages</h3>
-              <p className="text-xl font-bold">{stats.totalPackages || 0}</p>
-            </div>
-            <div className="stat bg-white shadow p-4 rounded-xl">
-              <h3 className="font-semibold">Total Clients</h3>
-              <p className="text-xl font-bold">{stats.totalClients || 0}</p>
-            </div>
-            <div className="stat bg-white shadow p-4 rounded-xl">
-              <h3 className="font-semibold">Total Stories</h3>
-              <p className="text-xl font-bold">{stats.totalStories || 0}</p>
-            </div>
-          </div>
-        )}
 
         {/* Admin Info */}
         <div className="flex flex-col items-center gap-4 bg-gray-100 p-5 rounded-lg shadow sm:w-full lg:w-1/2 mt-10 mx-auto text-center">
