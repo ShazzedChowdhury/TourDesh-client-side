@@ -3,6 +3,7 @@ import BlogSection from "./BlogSection";
 import ContactUsSection from "./ContactUsSection";
 import FeaturesSection from "./FeaturesSection";
 import OverviewSection from "./OverviewSection";
+import ReviewSection from "./ReviewSection/ReviewSection";
 import TourismAndTravelGuide from "./TourismAndTravelGuide/TourismAndTravelGuide";
 import TouristStorySection from "./TouristStorySection";
 
@@ -14,6 +15,7 @@ const Home = () => {
       <TourismAndTravelGuide />
       <TouristStorySection />
       <BlogSection />
+      <ReviewSection />
       <FeaturesSection />
       <ContactUsSection />
     </>
