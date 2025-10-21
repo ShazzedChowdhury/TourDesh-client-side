@@ -163,6 +163,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/all-trips">Trips</NavLink>
       </li>
+      <li>
+        <NavLink to="/blogs">Blogs</NavLink>
+      </li>
       {!user && (
         <>
           <li>

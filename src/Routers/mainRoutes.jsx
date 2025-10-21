@@ -26,6 +26,7 @@ import AllStories from "../pages/CommunityPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import ForgetPasswordPage from "../pages/AuthPages/ForgetPasswordPage";
 import OverviewPage from "../pages/DashboardPages/OverviewPage/OverviewPage";
+import BlogsPage from "../pages/BlogsPage/BlogsPage";
 
 
 const mainRoutes = createBrowserRouter([
@@ -53,6 +54,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "all-stories",
         element: <AllStories />,
+      },
+      {
+        path: "blogs",
+        element: <BlogsPage/>,
       },
       {
         path: "about-us",

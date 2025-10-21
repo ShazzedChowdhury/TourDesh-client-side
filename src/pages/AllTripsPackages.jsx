@@ -8,6 +8,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import Loading from "../shared/loading";
 import { Link } from "react-router";
 import { useState } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const AllTrips = () => {
   const axiosPublic = useAxiosPublic();
@@ -65,7 +66,7 @@ const AllTrips = () => {
             {/* Card Body */}
             <div className="card-body">
               <h3 className="card-title">{pkg.title}</h3>
-              <p className="font-semibold">📍 {pkg.location}</p>
+              <p className="font-semibold flex items-center gap-2"> <FaMapMarkerAlt className="text-primary" /> {pkg.location}</p>
               <p className="font-bold text-primary">💰 ${pkg.price}</p>
 
               <div className="card-actions">
